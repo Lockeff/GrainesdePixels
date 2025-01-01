@@ -1,0 +1,479 @@
+/* Styles globaux */
+body {
+  margin: 0;
+  font-family: 'DIN Pro', sans-serif;
+  background-color: #2e003e; /* Arrière-plan prune foncé */
+  color: #ffffff;
+}
+
+/* Déclarer DIN Pro Bold */
+@font-face {
+  font-family: 'DIN Pro';
+  src: url('./Public/DIN-Pro-Bold-Italic.ttf') format('truetype'); /* Correction du format */
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Déclarer DIN Pro Italic */
+@font-face {
+  font-family: 'DIN Pro';
+  src: url('./Public/DinProItalic.otf') format('opentype'); /* Correction du format */
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Appliquer DIN Pro Bold aux titres */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DIN Pro', sans-serif;
+  font-weight: bold;
+  font-style: normal; /* Pour éviter l'italic sur les titres */
+}
+
+/* Appliquer DIN Pro Italic aux paragraphes */
+p {
+  font-family: 'DIN Pro', sans-serif;
+  font-weight: normal; /* Empêche l'épaisseur Bold */
+  font-style: italic; /* Texte en italique */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #3a004e; /* Prune plus foncé */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+nav ul li {
+  margin: 0 1.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #e09eff; /* Prune clair */
+}
+
+main {
+  margin-top: 80px;
+}
+
+/* Sections */
+.content-section {
+  opacity: 0;
+  transform: translateX(-100%);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.content-section:not(.hidden) {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+}
+
+.hidden {
+  pointer-events: none;
+}
+
+
+
+/* Profil */
+.profil {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(145deg, #3a004e, #6a0079); /* Dégradé prune */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Image */
+.image-container {
+  display: flex;
+  margin-top: 5%;
+  flex: 0.5;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilImg {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.Logo{
+  width: 180px;
+  height: 180px;
+  margin-bottom: 80%;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.image-container img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+}
+
+/* Texte */
+.text-container {
+  flex: 2;
+  color: #ffffff;
+}
+
+.text-container h1 {
+  font-size: 2rem;
+  color: #e09eff; /* Prune clair */
+  margin-bottom: 1rem;
+}
+
+.text-container h2 {
+  font-size: 1.5rem;
+  color: #e09eff; /* Prune clair */
+  margin: 1.5rem 0 1rem;
+}
+
+.text-container p,
+.text-container ul {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.text-container ul {
+  padding-left: 1.5rem;
+}
+
+.text-container li {
+  margin-bottom: 0.5rem;
+}
+
+.text-container p strong {
+  color: #e09eff; /* Prune clair */
+}
+
+/* Section "Mes Projets" */
+#mes-projets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#mes-projets .project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: space-evenly;
+  width: 80%;
+  padding: 2rem;
+}
+
+/* Grille des projets */
+.project {
+  flex: 1 1 calc(30% - 4rem);
+  background: linear-gradient(145deg, #4a005e, #730090); /* Dégradé prune soutenu */
+  padding: 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  max-width: calc(30% - 4rem);
+}
+
+.project:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 32px rgba(224, 158, 255, 0.7); /* Accentuation prune clair */
+}
+
+.project img {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.project:hover img {
+  transform: scale(1.15);
+  z-index: 2;
+}
+
+.project h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 1rem 0;
+  font-weight: bold;
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Ombre autour du cadre (intérieur et extérieur) */
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.project:hover::before {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Détails du projet */
+#project-details .project-detail-content {
+  padding: 2rem;
+  background-color: #4a005e; /* Prune soutenu */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.project-images img {
+  width: calc(33.33% - 1rem);
+  margin: 0.5rem;
+  border-radius: 8px;
+}
+
+/* Liens */
+.project-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.project-button {
+  padding: 10px 20px;
+  background-color: #730090; /* Prune soutenu */
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.project-button:hover {
+  background-color: #e09eff; /* Prune clair */
+}
+
+/* Epic Link */
+.epic-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #730090; /* Prune */
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.epic-link:hover {
+  background-color: #e09eff; /* Prune clair */
+}
+
+/* Section de contact */
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(145deg, #3a004e, #6a0079); /* Dégradé prune */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  margin: 3rem auto;
+}
+
+/* Formulaire de contact */
+.contact {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.contact label {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.contact input, 
+.contact textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  background-color: #4a005e; /* Prune soutenu */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contact input:focus, 
+.contact textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(224, 158, 255, 0.8); /* Lumière prune douce */
+}
+
+/* Zone de texte */
+.contact textarea {
+  height: 150px;
+  resize: none;
+}
+
+/* Bouton d'envoi */
+.contact button {
+  padding: 1rem;
+  background-color: #730090; /* Prune soutenu */
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.contact button:hover {
+  background-color: #e09eff; /* Prune clair */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+
+/* Tablettes (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .profil {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .image-container {
+    display: block;
+    flex: 1;
+    text-align: center;
+  }
+
+  .image-container img {
+    margin-bottom: 5%;
+  }
+  
+  nav ul li a {
+    font-size: 1rem;
+  }
+
+  .profil p {
+    font-size: 0.9rem;
+  }
+
+  .project {
+    padding: 1rem;
+  }
+
+  #contact {
+    max-width: 90%;
+  }
+}
+
+/* Mobiles (max-width: 768px) */
+@media (max-width: 768px) {
+
+  .profil {
+    flex-direction: column;
+    width: 80%;
+  }
+  .image-container {
+    display: block;
+    flex: 1;
+    text-align: center;
+  }
+
+  .project {
+    max-width: 90%;
+  }
+
+  .contact {
+    gap: 1rem;
+  }
+}
+
+/* Petits Mobiles (max-width: 480px) */
+@media (max-width: 480px) {
+  nav ul li a {
+    font-size: 0.9rem;
+  }
+
+  .profil h1 {
+    font-size: 1.5rem;
+  }
+
+  .profil p {
+    font-size: 0.8rem;
+  }
+
+  .image-container {
+    display: block;
+    flex: 1;
+    text-align: center;
+  }
+
+  .project h2 {
+    font-size: 1rem;
+  }
+
+  #contact label {
+    font-size: 0.9rem;
+  }
+
+  .contact input,
+  .contact textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact button {
+    font-size: 0.9rem;
+  }
+}
