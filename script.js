@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const audioPlayer = document.getElementById('audioPlayer');
+          audioPlayer.volume = 0.2; // Volume par défaut (20 %)
     const links = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('.content-section');
     const projectDetailsSection = document.getElementById('project-details');
