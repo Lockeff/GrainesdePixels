@@ -1,6 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     const audioPlayer = document.getElementById('audioPlayer');
-          audioPlayer.volume = 0.2; // Volume par défaut (20 %)
+          audioPlayer.volume = 0.5; // Volume par défaut (20 %)
+          // Variable pour vérifier si la musique a déjà été lancée
+        let musicStarted = false;
+
+        // Fonction pour jouer la musique
+        function playMusicOnMouseMove() {
+            if (!musicStarted) { // Vérifie si la musique n'a pas encore démarré
+                const audioPlayer = document.getElementById('audioPlayer');
+                audioPlayer.volume = 0.2; // Volume bas par défaut
+                audioPlayer.play(); // Lance la musique
+                musicStarted = true; // Empêche de relancer la musique
+                console.log("Musique lancée");
+            }
+        }
+
+        // Écoute l'événement de mouvement de souris
+        document.addEventListener("mousemove", playMusicOnMouseMove);
     const links = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('.content-section');
     const projectDetailsSection = document.getElementById('project-details');
