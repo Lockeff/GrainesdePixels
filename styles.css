@@ -184,6 +184,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 100%;
+  flex-direction: column;
 }
 
 #mes-projets .project-grid {
@@ -337,7 +338,6 @@ main {
 
 .contact input, 
 .contact textarea {
-  width: 100%;
   max-width: 100%;
   padding: 1rem;
   background-color: #4a005e; /* Prune soutenu */
