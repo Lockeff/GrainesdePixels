@@ -166,6 +166,9 @@
     </section>
 
     <section id="contact" class="content-section hidden">
+      <div id="loading-spinner" class="hiddenspinner">
+        <div class="spinner"></div>
+      </div>
       <form id="contact-form" class="contact">
         <label for="subject">Objet :</label>
         <input type="text" id="subject" name="subject" required>
@@ -180,34 +183,5 @@
 
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
-  <script>
-      emailjs.init("txJe8zJfMCZj4vg1n"); // Remplacez par votre clé publique
-      const form = document.getElementById("contact-form");
-
-      form.addEventListener("submit", function (e) {
-          e.preventDefault(); // Empêche le rechargement de la page
-
-          // Récupérez les données du formulaire
-          const formData = {
-              subject: document.getElementById("subject").value,
-              email: document.getElementById("email").value,
-              message: document.getElementById("message").value,
-          };
-
-          // Envoyez l'email via EmailJS
-          emailjs
-              .send("service_ydmrfnh", "template_45pax4v", formData)
-              .then(
-                  function (response) {
-                      alert("Message envoyé avec succès !");
-                      form.reset(); // Réinitialise le formulaire
-                  },
-                  function (error) {
-                      alert("Une erreur est survenue lors de l'envoi du message.");
-                      console.error("EmailJS Error:", error);
-                  }
-              );
-      });
-  </script>
 </body>
 </html>

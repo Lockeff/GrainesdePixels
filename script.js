@@ -83,16 +83,50 @@ document.addEventListener('DOMContentLoaded', () => {
         projectDetailsSection.classList.remove('hidden');
       });
     });
+  });
+
+  //Gestion email
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialisation d'EmailJS
+    emailjs.init("txJe8zJfMCZj4vg1n"); // Remplacez par votre clé publique
+  
+    // Récupérez les éléments du DOM
+    const form = document.getElementById("contact-form");
+    const spinner = document.getElementById("loading-spinner");
+  
+    // Assurez-vous que le spinner est masqué au chargement
+    spinner.classList.add("hiddenspinner");
   
     // Gestion du formulaire de contact
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const subject = document.getElementById('subject').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        window.location.href = `mailto:lockeff@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}&reply-to=${encodeURIComponent(email)}`;
-      });
-    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Empêche le rechargement de la page
+  
+      // Affiche le spinner
+      spinner.classList.remove("hiddenspinner");
+  
+      // Récupérez les données du formulaire
+      const formData = {
+        subject: document.getElementById("subject").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+      };
+  
+      // Envoyez les données via EmailJS
+      emailjs
+        .send("service_ydmrfnh", "template_0fk8f5u", formData)
+        .then(
+          function () {
+            // Cache le spinner après succès
+            spinner.classList.add("hiddenspinner");
+            alert("Message envoyé avec succès !");
+            form.reset();
+          },
+          function (error) {
+            // Cache le spinner après échec
+            spinner.classList.add("hiddenspinner");
+            alert("Une erreur est survenue lors de l'envoi.");
+            console.error("EmailJS Error:", error);
+          }
+        );
+    });
   });
