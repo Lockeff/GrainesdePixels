@@ -40,8 +40,8 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #3a004e; /* Prune plus foncé */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  
+  box-shadow: 0 4px 6px rgba(46, 0, 99, 0.497);
   z-index: 1000;
 }
 
@@ -110,6 +110,15 @@ main {
 
 /* Image */
 .image-container {
+  display: flex;
+  margin-top: 5%;
+  flex: 0.5;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-accueil {
   display: flex;
   margin-top: 5%;
   flex: 0.5;

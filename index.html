@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Graines de Pixels</title>
   <link rel="stylesheet" href="styles.css">
   <!-- Ajouter une favicon PNG -->
   <link rel="icon" type="image/png" href="./Public/GdP-Logo.png">
 </head>
 <body>
+  
   <!-- Le lecteur audio -->
-  <audio id="audioPlayer" controls autoplay>
-    <source src="./Public/Echoes of the Lost City.mp3" type="audio/mpeg">
-    Votre navigateur ne supporte pas la balise audio.
-  </audio>
+  
 
   <header>
     <nav>
       <ul>
+        <li><a href="#Accueil">Accueil</a></li>
         <li><a href="#qui-suis-je">Qui sommes-nous ?</a></li>
         <li><a href="#mes-projets">Nos projets</a></li>
         <li><a href="#contact">Contacts</a></li>
@@ -26,9 +25,21 @@
   </header>
 
   <main id="main-content">
+    <section id="Accueil" class="content-section">
+      <div class="Accueil">
+        <div class="image-accueil">
+          <img src="./Public/GdP-Logo sans fond.png" alt="Logo" class="LogoAccueil">
+        </div>
+        <div class="text-container">
+          <p>Le studio qui fait germer vos idées ! <br>
+          Découvre nos projets et nos jeux et n'hesitez pas à <strong><a href="#contact" style="text-decoration: none; color: inherit;">nous contacter</a></strong> pour créer ensemble des jeux extraordinaires !</p>
+          
+        </div>
+      </div>
+    </section>
 
     <!-- SECTION QUI-SUIS-JE (inchangée) -->
-    <section id="qui-suis-je" class="content-section">
+    <section id="qui-suis-je" class="content-section hidden">
       <div class="profil">
         <div class="image-container">
           <img src="./Public/GdP-Logo sans fond.png" alt="Logo" class="Logo">
