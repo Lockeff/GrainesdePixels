@@ -2,7 +2,9 @@
 body {
   margin: 0;
   font-family: 'DIN Pro', sans-serif;
-  background-color: #171717; /* Arrière-plan prune foncé */
+  font-size: 20px;          /* Augmente la taille de base du texte */
+  line-height: 2;         /* Plus d’espace entre les lignes */
+  background-color: #171717;
   color: #ffffff;
 }
 
@@ -30,10 +32,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Appliquer DIN Pro Italic aux paragraphes */
-p, li {
+a {
   font-family: 'DIN Pro', sans-serif;
   font-weight: normal; /* Empêche l'épaisseur Bold */
   font-style: italic; /* Texte en italique */
+}
+p, li {
+  font-family:  sans-serif;
+  font-weight: normal; /* Empêche l'épaisseur Bold */
+  
 }
 
 header {
@@ -43,6 +50,10 @@ header {
   background-color: #000000; /* Arrière-plan prune foncé */
   box-shadow: 0 4px 6px rgba(46, 0, 99, 0.497);
   z-index: 1000;
+}
+
+.logoheader{
+ width:5%;
 }
 
 nav ul {
@@ -55,6 +66,7 @@ nav ul {
 
 nav ul li {
   margin: 0 1.5rem;
+  align-self: center;
 }
 
 nav ul li a {
@@ -75,6 +87,7 @@ main {
 
 /* SECTIONS GÉNÉRALES */
 .content-section {
+  margin-top: 10%;
   opacity: 0;
   transform: translateX(-100%);
   position: absolute;
@@ -98,6 +111,8 @@ main {
 /* -------------------- */
 
 .Accueil {
+
+  margin-top: 10%;
   position: relative;
   min-height: 50vh; /* Hauteur pour un aspect plus "hero" */
   display: flex;
@@ -133,7 +148,7 @@ main {
 .Accueil .text-container {
   max-width: 600px;
   text-align: center;
-  margin: 0 auto;
+  margin-top: 10%;
 }
 
 .Accueil .text-container p {

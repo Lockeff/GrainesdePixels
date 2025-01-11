@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fonction pour scroller avec un offset
   function scrollToSectionWithOffset(section) {
-    const additionalOffset = 20; // Ajoute un espace supplémentaire de 20px
-    const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - headerHeight - additionalOffset;
+    const additionalOffset = 100; // Ajoute un espace supplémentaire de 20px
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY - (headerHeight + 150);
     window.scrollTo({ top: sectionTop, behavior: 'smooth' });
   }
 
