@@ -10,16 +10,28 @@
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="#Accueil">Accueil</a></li>
-        <li><a href="#qui-suis-je">Qui sommes-nous ?</a></li>
-        <img src="./Public/GdP-Logo sans fond.png" class="logoheader">
-        <li><a href="#mes-projets">Nos projets</a></li>
-        <li><a href="#contact">Contacts</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="navbar">
+    <!-- Bouton burger (caché en desktop, visible en mobile) -->
+    <div class="burger" id="burger-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#Accueil">Accueil</a></li>
+      <li><a href="#qui-suis-je">Qui sommes-nous ?</a></li>
+      
+      <!-- Logo au centre -->
+      <li class="logo-center">
+        <img src="./Public/GdP-Logo sans fond.png" class="logoheader" alt="Logo Graines de Pixels">
+      </li>
+      
+      <li><a href="#mes-projets">Nos projets</a></li>
+      <li><a href="#contact">Contacts</a></li>
+    </ul>
+  </nav>
+</header>
 
   <main id="main-content">
     <!-- SECTION ACCUEIL MODIFIÉE -->

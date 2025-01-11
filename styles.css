@@ -43,32 +43,49 @@ p, li {
   
 }
 
+/* HEADER GLOBAL */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #000000; /* Arrière-plan prune foncé */
+  background-color: #000000;
   box-shadow: 0 4px 6px rgba(46, 0, 99, 0.497);
   z-index: 1000;
 }
 
-.logoheader{
- width:5%;
+/* LOGO DANS LE HEADER */
+.logoheader {
+  width: 50%;
 }
 
+/* NAV : On sépare un peu la nav du ul pour plus de flexibilité */
+nav {
+  display: flex;
+  justify-content: center; /* ou space-between si on veut le burger à gauche/droite */
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+
+/* Par défaut (desktop), on affiche les liens en ligne */
 nav ul {
   display: flex;
-  justify-content: center;
   list-style: none;
   margin: 0;
-  padding: 1rem;
+  padding: 0; /* Déjà géré par nav */
+    /* AJOUT pour centrer horizontal & vertical */
+    justify-content: center; 
+    align-items: center;
 }
 
+/* Les li */
 nav ul li {
   margin: 0 1.5rem;
   align-self: center;
+  width: 10%;
 }
 
+/* Les liens */
 nav ul li a {
   text-decoration: none;
   color: #ffffff;
@@ -77,11 +94,65 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #e09eff; /* Prune clair */
+  color: #e09eff;
+}
+
+/* Le bouton burger (caché sur desktop) */
+.burger {
+  display: none;     /* On l'affiche en mobile via @media */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px; 
+  height: 3px;
+  margin: 4px 0;
+  background-color: #fff;
+  transition: 0.3s;
 }
 
 main {
   margin-top: 80px;
+}
+
+/* ==================== */
+/* RESPONSIVE BURGER    */
+/* ==================== */
+@media (max-width: 768px) {
+
+  /* On affiche le bouton burger en mobile */
+  .burger {
+    display: flex;
+  }
+
+  /* On masque le menu horizontal et on le transforme en vertical */
+  nav ul {
+    position: absolute;
+    top: 60px; /* Ajuste selon la hauteur réelle de ton header */
+    right: 0;
+    width: 100%; 
+    background-color: #000000;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-100vh);
+    transition: transform 0.4s ease-in-out;
+  }
+
+  /* On affiche le menu quand on ajoute la classe .nav-active */
+  nav ul.nav-active {
+    transform: translateY(0);
+  }
+
+  /* Les <li> sont empilés */
+  nav ul li {
+    margin: 1rem 0;
+  }
+
+  /* Ajuste la taille du logo si nécessaire en mobile */
+  .logoheader {
+    width: 15%;
+  }
 }
 
 

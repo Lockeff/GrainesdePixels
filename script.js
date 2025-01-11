@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+  //Birger menu mobile
+  const burger = document.getElementById('burger-menu');
+    const navUl = document.querySelector('nav ul');
+
+    burger.addEventListener('click', () => {
+      navUl.classList.toggle('nav-active');
+  });
   const links = document.querySelectorAll('nav ul li a, a[href^="#"]'); // Sélectionne les liens de navigation et internes
   const sections = document.querySelectorAll('.content-section');
   const projectDetailsSection = document.getElementById('project-details');
