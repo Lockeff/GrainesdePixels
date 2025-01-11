@@ -80,16 +80,16 @@ nav ul {
 
 /* Les li */
 nav ul li {
-  margin: 0 1.5rem;
   align-self: center;
-  width: 10%;
+  width: 20%;
+  text-align: center;
 }
 
 /* Les liens */
 nav ul li a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1 rem;
   transition: color 0.3s;
 }
 
@@ -219,7 +219,7 @@ main {
 .Accueil .text-container {
   max-width: 600px;
   text-align: center;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .Accueil .text-container p {
@@ -638,6 +638,10 @@ main {
     width: 80%;
   }
 
+  .Accueil .text-container {
+    margin-top: 10%;
+  }
+
   .image-container {
     display: block;
     flex: 1;
@@ -678,6 +682,10 @@ main {
     text-align: center;
   }
 
+  .Accueil .text-container {
+    margin-top: 10%;
+  }
+
   .project {
     max-width: 90%;
   }
@@ -705,6 +713,10 @@ main {
     display: block;
     flex: 1;
     text-align: center;
+  }
+
+  .Accueil .text-container {
+    margin-top: 10%;
   }
 
   .project h2 {
