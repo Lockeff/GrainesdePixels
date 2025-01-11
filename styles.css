@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'DIN Pro', sans-serif;
-  background-color: #373737; /* Arrière-plan prune foncé */
+  background-color: #171717; /* Arrière-plan prune foncé */
   color: #ffffff;
 }
 
@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Appliquer DIN Pro Italic aux paragraphes */
-p {
+p, li {
   font-family: 'DIN Pro', sans-serif;
   font-weight: normal; /* Empêche l'épaisseur Bold */
   font-style: italic; /* Texte en italique */
@@ -40,7 +40,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  
+  background-color: #000000; /* Arrière-plan prune foncé */
   box-shadow: 0 4px 6px rgba(46, 0, 99, 0.497);
   z-index: 1000;
 }
@@ -72,7 +72,8 @@ main {
   margin-top: 80px;
 }
 
-/* Sections */
+
+/* SECTIONS GÉNÉRALES */
 .content-section {
   opacity: 0;
   transform: translateX(-100%);
@@ -90,6 +91,118 @@ main {
 
 .hidden {
   pointer-events: none;
+}
+
+/* -------------------- */
+/* SECTION ACCUEIL      */
+/* -------------------- */
+
+.Accueil {
+  position: relative;
+  min-height: 50vh; /* Hauteur pour un aspect plus "hero" */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Fond : dégradé, modifiable si besoin pour y insérer une image */
+  background: linear-gradient(145deg, #3a004e, #000000);
+  border-radius: 15px;
+  margin: 2rem;
+  padding: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.image-accueil {
+  margin: 0;
+  text-align: center;
+}
+
+.LogoAccueil {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.LogoAccueil:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+}
+
+.Accueil .text-container {
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.Accueil .text-container p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* BLOCS DE NEWS */
+.news-section {
+  margin: 2rem auto 0 auto;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.news-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #e09eff; /* Prune clair */
+}
+
+.news-container {
+  /* On empile chaque news-item en colonne */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%; 
+  /* Permet aux éléments internes de s'adapter à la largeur max du parent */
+}
+
+.news-item {
+  display: flex;              /* Pour placer image à gauche et texte à droite */
+  align-items: flex-start;    /* Aligne le contenu en haut */
+  background: linear-gradient(145deg, #000000, #3a004e); /* Dégradé prune */
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+.news-item:hover {
+  transform: translateY(-2px);
+}
+
+.news-logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 1rem; /* Espace entre logo et texte */
+  flex-shrink: 0;     /* Évite que l’image se réduise en cas de texte long */
+}
+
+.news-details {
+  flex: 1;            /* Le texte prend tout l’espace restant */
+}
+
+.news-details h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #e09eff; /* Prune clair */
+}
+
+.news-details p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 
@@ -269,7 +382,7 @@ main {
 /* Détails du projet */
 #project-details .project-detail-content {
   padding: 2rem;
-  background-color: #4a005e; /* Prune soutenu */
+  background: linear-gradient(145deg, #3a004e, #000000); /* Dégradé prune */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
@@ -289,7 +402,7 @@ main {
 
 .project-button {
   padding: 10px 20px;
-  background-color: #373737; /* Prune soutenu */
+  background-color: #171717; /* Prune soutenu */
   color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
@@ -305,7 +418,7 @@ main {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.8rem 1.5rem;
-  background-color: #373737; /* Prune */
+  background-color: #171717; /* Prune */
   color: #ffffff;
   text-decoration: none;
   border-radius: 8px;
@@ -373,7 +486,7 @@ main {
 /* Bouton d'envoi */
 .contact button {
   padding: 1rem;
-  background-color: #373737; /* Prune soutenu */
+  background-color: #171717; /* Prune soutenu */
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: bold;
