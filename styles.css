@@ -4,7 +4,7 @@ body {
   font-family: 'DIN Pro', sans-serif;
   font-size: 20px;          /* Augmente la taille de base du texte */
   line-height: 2;         /* Plus d’espace entre les lignes */
-  background-color: #171717;
+  background-color: #0b0b0b;
   color: #ffffff;
 }
 
@@ -27,20 +27,28 @@ body {
   font-style: italic;
 }
 
+/* Déclarer DIN Pro Italic */
+@font-face {
+  font-family: 'Poxel';
+  src: url('./Public/poxel-font.ttf') format('opentype'); /* Correction du format */
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Appliquer DIN Pro Bold aux titres */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'DIN Pro', sans-serif;
-  font-weight: bold;
+  font-family: 'Poxel', sans-serif;
+  font-weight: normal;
   font-style: normal; /* Pour éviter l'italic sur les titres */
 }
 
 /* Appliquer DIN Pro Italic aux paragraphes */
 a {
-  font-family: 'DIN Pro', sans-serif;
+  font-family: 'Poxel', sans-serif;
   font-weight: normal; /* Empêche l'épaisseur Bold */
-  font-style: italic; /* Texte en italique */
+  font-style: normal; /* Texte en italique */
 }
-p, li {
+p {
   font-family:  sans-serif;
   font-weight: normal; /* Empêche l'épaisseur Bold */
   
@@ -51,7 +59,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #000000;
+  background-color: #0b0b0b;
   box-shadow: 0 4px 6px rgba(46, 0, 99, 0.497);
   z-index: 1000;
 }
@@ -97,7 +105,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #e09eff;
+  color: #dc9bfb;
 }
 
 /* Le bouton burger (caché sur desktop) */
@@ -193,8 +201,6 @@ main {
 /* -------------------- */
 
 .Accueil {
-
-  margin-top: 10%;
   position: relative;
   min-height: 50vh; /* Hauteur pour un aspect plus "hero" */
   display: flex;
@@ -203,42 +209,25 @@ main {
   justify-content: center;
 
   /* Fond : dégradé, modifiable si besoin pour y insérer une image */
-  background: linear-gradient(145deg, #3a004e, #000000);
-  border-radius: 15px;
-  margin: 2rem;
+  background:url('./Public/MainBackgroundTop.png');
   padding: 2rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-.image-accueil {
-  margin: 0;
-  text-align: center;
-}
-
-.LogoAccueil {
-  width: 200px;
-  height: auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 1.5rem;
-}
-
-.LogoAccueil:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
-}
 
 .Accueil .text-container {
-  max-width: 600px;
+  max-width: 80%;
   text-align: center;
   margin-top: 5%;
+  padding-top: 15%;
 }
+
 
 .Accueil .text-container p {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 0;
 }
-
 /* BLOCS DE NEWS */
 .news-section {
   margin: 2rem auto 0 auto;
@@ -252,7 +241,6 @@ main {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #e09eff; /* Prune clair */
 }
 
 .news-container {
@@ -267,10 +255,15 @@ main {
 .news-item {
   display: flex;              /* Pour placer image à gauche et texte à droite */
   align-items: flex-start;    /* Aligne le contenu en haut */
-  background: linear-gradient(145deg, #000000, #3a004e); /* Dégradé prune */
-  border-radius: 8px;
-  padding: 1rem 1.2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(145deg, #000000, #333334); /* Dégradé prune */
+    /* Style de l'encadrement */
+    border: 2px solid rgba(224, 158, 255, 0.7); /* Couleur prune clair, semi-transparente */
+    border-radius: 50px; /* Coins arrondis */
+    padding: 5px; /* Espacement interne pour créer de l'air autour de l'image */
+    box-shadow: 0 0 10px rgba(224, 158, 255, 0.5); /* Effet lumineux autour */
+    
+    /* Animation au survol (facultatif) */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   transition: transform 0.3s;
 }
 
@@ -279,9 +272,10 @@ main {
 }
 
 .news-logo {
-  width: 60px;
-  height: 60px;
-  margin-right: 1rem; /* Espace entre logo et texte */
+  width: 10%;
+  align-self: center;
+  margin-right: 1rem;
+  margin-left: 1rem; /* Espace entre logo et texte */
   flex-shrink: 0;     /* Évite que l’image se réduise en cas de texte long */
 }
 
@@ -293,7 +287,7 @@ main {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
-  color: #e09eff; /* Prune clair */
+  color: #dc9bfb; /* Prune clair */
 }
 
 .news-details p {
@@ -367,13 +361,13 @@ main {
 
 .text-container h1 {
   font-size: 2rem;
-  color: #e09eff; /* Prune clair */
+  color: #dc9bfb; /* Prune clair */
   margin-bottom: 1rem;
 }
 
 .text-container h2 {
   font-size: 1.5rem;
-  color: #e09eff; /* Prune clair */
+  color: #dc9bfb; /* Prune clair */
   margin: 1.5rem 0 1rem;
 }
 
@@ -394,7 +388,7 @@ main {
 }
 
 .text-container p strong {
-  color: #e09eff; /* Prune clair */
+  color: #dc9bfb; /* Prune clair */
 }
 
 /* Section "Mes Projets" */
@@ -523,7 +517,7 @@ main {
 }
 
 .epic-link:hover {
-  background-color: #e09eff; /* Prune clair */
+  background-color: #dc9bfb; /* Prune clair */
 }
 
 /* Section de contact */
