@@ -343,12 +343,6 @@ main {
   display:flex;
 }
 
-.profilfleche img{
-  width: 10%;
-  height: 10%;
-  padding-top: 2%;
-  padding-right: 5%;
-}
 
 .TexteCentre{
   text-align: center;
@@ -387,10 +381,24 @@ main {
 
 .text-container ul {
   padding-left: 1.5rem;
+  list-style: none; /* Supprime les puces par défaut */
+  padding: 0;
+}
+
+.bullet {
+  width: 2%; /* Définit la largeur de l'image */
+  height: 2%; /* Définit la hauteur de l'image */
+  margin-right: 10px; /* Ajoute un espace entre l'image et le texte */
 }
 
 .text-container li {
   margin-bottom: 0.5rem;
+}
+
+.text-container li::before {
+  width: 15px; /* Définit la largeur de l'image */
+  height: 15px; /* Définit la hauteur de l'image */
+  
 }
 
 .text-container p strong {
