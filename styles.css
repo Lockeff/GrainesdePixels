@@ -575,7 +575,6 @@ main {
   padding: 3rem 1rem;
   max-width: 700px;
   margin: 3rem auto;
-  margin-top: 10%;
 }
 
 .contact {
@@ -630,6 +629,10 @@ main {
   text-decoration: none; /* Supprime le soulignement */
   border: none; /* Supprime les bordures */
   cursor: pointer; /* Curseur en main */
+  background: none; /* Supprime la couleur de fond */
+  border: none; /* Supprime la bordure */
+  padding: 0; /* Supprime les marges internes */
+  margin: 0; /* Supprime les marges externes */
   transition: transform 0.3s, box-shadow 0.3s; /* Animation fluide */
 }
 .envoyerbutton img {
