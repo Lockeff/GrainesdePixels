@@ -274,6 +274,9 @@ main {
 .news-logo {
   width: 10%;
   align-self: center;
+  border: 1px solid rgba(224, 158, 255, 0.7); /* Couleur prune clair, semi-transparente */
+  border-radius: 15%;
+  box-shadow: 0 0 5px rgba(224, 158, 255, 0.5); /* Effet lumineux autour */
   margin-right: 1rem;
   margin-left: 1rem; /* Espace entre logo et texte */
   flex-shrink: 0;     /* Évite que l’image se réduise en cas de texte long */
@@ -307,9 +310,6 @@ main {
   max-width: 90%;
   margin: 0 auto;
   padding: 2rem;
-  background: linear-gradient(145deg, #3a004e, #000000); /* Dégradé prune */
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 /* Image */
@@ -348,6 +348,21 @@ main {
 
 }
 
+.profilfleche{
+  display:flex;
+}
+
+.profilfleche img{
+  width: 10%;
+  height: 10%;
+  padding-top: 2%;
+  padding-right: 5%;
+}
+
+.TexteCentre{
+  text-align: center;
+}
+
 .image-container img:hover {
   transform: scale(1.1);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
@@ -360,6 +375,7 @@ main {
 }
 
 .text-container h1 {
+  text-align: center;
   font-size: 2rem;
   color: #dc9bfb; /* Prune clair */
   margin-bottom: 1rem;
@@ -376,7 +392,6 @@ main {
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1rem;
-  text-align: justify;
 }
 
 .text-container ul {
@@ -390,6 +405,46 @@ main {
 .text-container p strong {
   color: #dc9bfb; /* Prune clair */
 }
+
+/* Conteneur dédié pour le centrage */
+.wrapper {
+  position: relative; /* Position relative pour un centrage absolu à l'intérieur */
+  width: 100%; /* Prend toute la largeur de la page */
+  display: flex; /* Utilisation de flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+}
+
+/* Bouton avec image */
+.contactbutton {
+  display: inline-block;
+  text-decoration: none; /* Supprime le soulignement */
+  border: none; /* Supprime les bordures */
+  cursor: pointer; /* Curseur en main */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animation fluide */
+}
+
+.contactbutton img {
+  display: block; /* Supprime les espaces indésirables */
+  width: 300px; /* Largeur fixée */
+  height: auto; /* Conserve les proportions */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre pour effet 3D */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animation fluide */
+}
+
+/* Effet au survol */
+.contactbutton:hover img {
+  transform: scale(1.1); /* Agrandissement au survol */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Accentuation de l'ombre */
+}
+
+/* Effet au clic */
+.contactbutton:active img {
+  transform: scale(0.95); /* Réduction au clic */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre */
+}
+
 
 /* Section "Mes Projets" */
 #mes-projets {
@@ -522,13 +577,9 @@ main {
 
 /* Section de contact */
 #contact {
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 3rem 1rem;
-  background: linear-gradient(145deg, #3a004e, #000000); /* Dégradé prune */
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
   max-width: 700px;
   margin: 3rem auto;
   margin-top: 10%;
@@ -536,12 +587,12 @@ main {
 
 /* Formulaire de contact */
 .contact {
-  width: 100%;
-  max-width: 600px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1rem;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .contact label {
@@ -554,12 +605,17 @@ main {
 .contact textarea {
   max-width: 100%;
   padding: 1rem;
-  background-color: #4a005e; /* Prune soutenu */
+  background: linear-gradient(145deg, #000000, #333334); /* Dégradé prune */
+  /* Style de l'encadrement */
+  border: 2px solid rgba(224, 158, 255, 0.7); /* Couleur prune clair, semi-transparente */
+  border-radius: 50px; /* Coins arrondis */
+  padding: 5px; /* Espacement interne pour créer de l'air autour de l'image */
+  box-shadow: 0 0 10px rgba(224, 158, 255, 0.5); /* Effet lumineux autour */
+  
   color: #ffffff;
   border: none;
   border-radius: 10px;
   font-size: 1rem;
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
@@ -575,25 +631,32 @@ main {
   resize: none;
 }
 
-/* Bouton d'envoi */
-.contact button {
-  padding: 1rem;
-  background-color: #171717; /* Prune soutenu */
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
 
-.contact button:hover {
-  background-color: #3a004e; /* Prune clair */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-  transform: translateY(-2px);
+/* Bouton avec image */
+.envoyerbutton {
+  display: inline-block;
+  text-decoration: none; /* Supprime le soulignement */
+  border: none; /* Supprime les bordures */
+  cursor: pointer; /* Curseur en main */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animation fluide */
+}
+.envoyerbutton img {
+  display: block; /* Supprime les espaces indésirables */
+  width: 300px; /* Largeur fixée */
+  height: auto; /* Conserve les proportions */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre pour effet 3D */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animation fluide */
+}
+/* Effet au survol */
+.envoyerbutton:hover img {
+  transform: scale(1.1); /* Agrandissement au survol */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Accentuation de l'ombre */
+}
+/* Effet au clic */
+.envoyerbutton:active img {
+  transform: scale(0.95); /* Réduction au clic */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre */
 }
 
 /* Style pour masquer/afficher le spinner */
