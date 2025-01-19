@@ -41,6 +41,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+//Carrroussel
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
+  let currentIndex = 0;
+  // Fonction pour changer de slide
+  const updateSlide = (index) => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+  // Navigation à gauche
+  leftArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+    updateSlide(currentIndex);
+  });
+  // Navigation à droite
+  rightArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+    updateSlide(currentIndex);
+  });
+  // Récupère toutes les images du carrousel
+  const carouselImages = document.querySelectorAll('.carousel-slide img');
+  carouselImages.forEach((img) => {
+    const originalSrc = img.src; // URL de l'image originale
+    const hoverSrc = img.dataset.hover; // URL de l'image alternative
+    // Changer l'image au survol
+    img.addEventListener('mouseenter', () => {
+      img.src = hoverSrc;
+    });
+    // Restaurer l'image originale lorsque la souris quitte
+    img.addEventListener('mouseleave', () => {
+      img.src = originalSrc;
+    });
+  });
+
   // Gestion des projets
   const projects = document.querySelectorAll('.project');
   projects.forEach(project => {

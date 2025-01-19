@@ -27,7 +27,7 @@ body {
   font-style: italic;
 }
 
-/* Déclarer DIN Pro Italic */
+/* Déclarer Poxel */
 @font-face {
   font-family: 'Poxel';
   src: url('./Public/poxel-font.ttf') format('opentype'); /* Correction du format */
@@ -35,14 +35,14 @@ body {
   font-style: normal;
 }
 
-/* Appliquer DIN Pro Bold aux titres */
+/* Appliquer Poxel aux titres */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poxel', sans-serif;
   font-weight: normal;
   font-style: normal; /* Pour éviter l'italic sur les titres */
 }
 
-/* Appliquer DIN Pro Italic aux paragraphes */
+/* Appliquer Poxel  aux paragraphes */
 a {
   font-family: 'Poxel', sans-serif;
   font-weight: normal; /* Empêche l'épaisseur Bold */
@@ -115,14 +115,12 @@ nav ul li a:hover {
   cursor: pointer;
   right: 0;
 }
-
 .mobile{
   display: flex;
 }
 .mobile img{
   width: 10%;
 }
-
 .bar {
   width: 25px; 
   height: 3px;
@@ -130,21 +128,17 @@ nav ul li a:hover {
   background-color: #fff;
   transition: 0.3s;
 }
-
 main {
   margin-top: 80px;
 }
-
 /* ==================== */
 /* RESPONSIVE BURGER    */
 /* ==================== */
 @media (max-width: 768px) {
-
   /* On affiche le bouton burger en mobile */
   .burger {
     display: flex;
   }
-
   /* On masque le menu horizontal et on le transforme en vertical */
   nav ul {
     position: absolute;
@@ -157,17 +151,14 @@ main {
     transform: translateY(-100vh);
     transition: transform 0.4s ease-in-out;
   }
-
   /* On affiche le menu quand on ajoute la classe .nav-active */
   nav ul.nav-active {
     transform: translateY(0);
   }
-
   /* Les <li> sont empilés */
   nav ul li {
     margin: 1rem 0;
   }
-
   /* Ajuste la taille du logo si nécessaire en mobile */
   .logoheader {
     width: 15%;
@@ -301,7 +292,9 @@ main {
 
 
 
-/* Profil */
+/* -------------------- */
+/* SECTION PROFIL      */
+/* -------------------- */
 .profil {
   display: flex;
   flex-wrap: wrap;
@@ -446,7 +439,75 @@ main {
 }
 
 
-/* Section "Mes Projets" */
+/* -------------------- */
+/* SECTION PROJETS      */
+/* -------------------- */
+/*CARROUSSEL*/
+/* Style global du carrousel */
+.carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 80%;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+}
+/* Conteneur des slides */
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+}
+.carousel-track {
+  list-style: none; /* Supprime les puces (bullet points) */
+  padding: 0; /* Supprime les marges internes du conteneur */
+  margin: 0; /* Supprime les marges externes du conteneur */
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+/* Style pour chaque slide */
+.carousel-slide {
+  min-width: 30%; /* Chaque slide prend la largeur entière */
+  position: relative;
+  text-align: center;
+}
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* Effet au survol */
+.carousel-slide:hover {
+  transform: scale(1.05); /* Agrandit légèrement le conteneur */
+}
+.carousel-slide:hover img {
+  transform: scale(1.1); /* Zoom de l'image */
+  filter: brightness(1.2); /* Rendre l'image plus lumineuse */
+}
+/* Flèches de navigation */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+.left-arrow {
+  left: 10px;
+}
+.right-arrow {
+  right: 10px;
+}
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
 #mes-projets {
   display: flex;
   justify-content: center;
@@ -454,7 +515,6 @@ main {
   height: 100%;
   flex-direction: column;
 }
-
 #mes-projets .project-grid {
   display: flex;
   flex-wrap: wrap;
@@ -464,67 +524,6 @@ main {
   padding: 2rem;
 }
 
-/* Grille des projets */
-.project {
-  flex: 1 1 calc(30% - 4rem);
-  background: linear-gradient(145deg, #4a005e, #730090); /* Dégradé prune soutenu */
-  padding: 1.5rem;
-  border-radius: 20px;
-  text-align: center;
-  position: relative;
-  overflow: visible;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  max-width: calc(30% - 4rem);
-}
-
-.project:hover {
-  transform: scale(1.05);
-  box-shadow: 0 16px 32px rgba(224, 158, 255, 0.7); /* Accentuation prune clair */
-}
-
-.project img {
-  width: 100%;
-  border-radius: 15px;
-  transition: transform 0.3s, opacity 0.3s;
-  opacity: 1;
-  position: relative;
-  z-index: 1;
-}
-
-.project:hover img {
-  transform: scale(1.15);
-  z-index: 2;
-}
-
-.project h2 {
-  font-size: 1.5rem;
-  color: #ffffff;
-  margin: 1rem 0;
-  font-weight: bold;
-  position: relative;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Ombre autour du cadre (intérieur et extérieur) */
-.project::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-  z-index: -1;
-}
-
-.project:hover::before {
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-}
-
 /* Détails du projet */
 #project-details .project-detail-content {
   padding: 2rem;
@@ -532,20 +531,17 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
-
 .project-images img {
   width: calc(33.33% - 1rem);
   margin: 0.5rem;
   border-radius: 8px;
 }
-
 /* Liens */
 .project-links {
   margin-top: 20px;
   display: flex;
   gap: 10px;
 }
-
 .project-button {
   padding: 10px 20px;
   background-color: #171717; /* Prune soutenu */
@@ -554,11 +550,9 @@ main {
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
-
 .project-button:hover {
   background-color: #3a004e; /* Prune clair */
 }
-
 /* Epic Link */
 .epic-link {
   display: inline-block;
@@ -570,12 +564,13 @@ main {
   border-radius: 8px;
   transition: background-color 0.3s;
 }
-
 .epic-link:hover {
   background-color: #dc9bfb; /* Prune clair */
 }
 
-/* Section de contact */
+/* -------------------- */
+/* SECTION CONTACT      */
+/* -------------------- */
 #contact {
   justify-content: center;
   align-items: center;
@@ -585,7 +580,6 @@ main {
   margin-top: 10%;
 }
 
-/* Formulaire de contact */
 .contact {
   width: 80%;
   display: flex;

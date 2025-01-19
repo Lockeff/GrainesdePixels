@@ -153,143 +153,105 @@
 
     <!-- SECTION MES PROJETS (avec séparation claire) -->
     <section id="mes-projets" class="content-section hidden">
+
+      <div class="carousel">
+        <!-- Flèche gauche -->
+        <button class="arrow left-arrow">&lt;</button>
       
-      <!-- TITRE & SEPARATION POUR LE STUDIO -->
-      <div style="
-        text-align: center; 
-        margin-top: 2rem; 
-        margin-bottom: 1rem;
-      ">
-        <h2 style="
-          margin: 0;
-          font-size: 1.8rem;
-        ">
-          Projets réalisés avec le studio Graines de Pixels
-        </h2>
-        <!-- Ligne de séparation (inline CSS autorisé) -->
-        <hr style="
-          width: 60px;
-          margin: 0.5rem auto;
-          border: none;
-          height: 3px;
-          background-color: #e09eff;
-        ">
+        <!-- Conteneur des slides -->
+        <div class="carousel-track-container">
+          <ul class="carousel-track">
+            <li class="carousel-slide">
+              <div class="project" 
+                data-title="Kelc'h AR Viya" 
+                data-description="Kelc'h AR Viya est une production Graines de Pixels réalisée par Graines de Pixels.
+                
+                  Un Action/RPG d'exploration narratif mettant en scène des combats épiques et exploration spatiale.
+                  
+                  Cela fait maintenant 50 ans qu’ils sont arrivés sur Terre, bouleversant nos croyances et notre science. La Viya, jusqu’ici inconnue, régit notre existence maintenant. Et c’est grâce aux eraiés, dont le monde leur a été volé, que nous sommes capables de manipuler l’espace et pour certain, le temps. Mais ce qui a possédé leur foyer lorgne sur le nôtre et sur bien d’autres. C’est pourquoi je me suis enrôlé dans la Coalition pour explorer l'univers et fédérer l’Ervillia contre les Tosieas: nos créateurs et exterminateurs.​
+
+                  Mais en moi, quelque chose cloche. Quelque chose que je ne saurais décrire. Est-ce la Viya qui m'appelle à elle? Est-ce que son écoulement touche à sa fin pour moi? Ou bien est-ce autre chose qui me désire et cherche à m'attirer à lui ou elle...​
+                  
+                  Nous sommes en 2150 et le joueur incarne un personnage qu'il créé et personnalise, Terrien(ne), s'enrôlant dans une coalition terrienne/éraiée. Le but de cette organisation est d’explorer l’espace pour trouver des alliés face aux Tosieas et aider les eraiés à reprendre leur planète perdue.​
+                  
+                  Mais parfois, ces civilisations sont déjà sous l'emprise des Tosieas, ou bien lorgne elles aussi sur nos mondes." 
+                data-buttons='[
+                  {"text": "Lien officiel", "url": "https://www.lecycledelavia.com/"}
+                ]'
+                data-missions="Rédaction du Game Design Document, Développement Unreal Engine 5, Redaction du Level Design Document, Réalisation du Sound Design avec IA, Statut: Protoype en cours de développement sur PC Windows"
+                data-images="./Public/Kelc1.png,./Public/Kelc2.png,./Public/Kelc3.png">
+                  <img src="./Public/Carroussel/SlideKech.png"  data-hover="./Public/Carroussel/SlideKelchHover.png"  alt="Kelc'h Ar Viya">
+              </div>
+            </li>
+            <li class="carousel-slide">
+              <div class="project" 
+                data-title="Atika The Blue Quest" 
+                data-description="Atika The Blue Quest est une production de CryptoWeb3 réalisée par Ronan Menguy, co-fondateur de Graines de Pixels.
+                
+                Atika the Blue Quest vous propulse dans CW3 Town à la poursuite d’Acid, le braqueur de token!
+                Poursuivez ce voleur, venez à bout des donjons qui jalonneront votre aventure et venez à bout de plus grand voleur de CW3 town.
+                Prenez votre part du butin!
+                
+                Fonctionnalités:
+                - Jeu d’aventure à la troisième personne
+                - Donjons avec ennemis, réflexion, puzzle et plateforme
+                - Donjons First person shooter
+                - Monde ouvert et système de quête à suivre
+                - Gain de Token pour les détenteurs de NFT"
+                data-buttons='[
+                  {"text": "Page Epic Games", "url": "https://store.epicgames.com/fr/p/atika-the-blue-quest-947d2d"},
+                  {"text": "Page Play Store", "url": "https://play.google.com/store/apps/details?id=com.cw3.atikathebluequest&hl=fr"}
+                ]'
+                data-missions="Game Designer, Développeur Unreal Engine 5, Level Designer, Sound Designer, Statut: En produciton sur PC Windows (Epic Game) et Android"
+                data-images="./Public/Atika1.png,./Public/Atika2.png,./Public/Atika3.png">
+                <img src="./Public/Carroussel/SlideAtika.png" data-hover="./Public/Carroussel/SlideAtikaHover.png" alt="Satoshi City">
+              </div>
+            </li>
+            <li class="carousel-slide">
+                <div class="project" 
+                  data-title="Call 911" 
+                  data-description="Call 911 est une production du studio Thugz Labs réalisée par Ronan Menguy, co-fondateur de Graines de Pixels.
+                  
+                  Call 911 est un runner infini dont l’objectif est de faire la course la plus longue en récoltant le plus de token DLZ, tout en échappant à la police qui poursuit le joueur.
+
+                  Le parcourt se déroule dans les rues de Satoshi City et est jonché d’obstacles que le joueur doit éviter.
+                  
+                  L’objectif est de faire la course la plus longue possible. Le joueur doit aussi utiliser ses reflexes pour collecter le plus de DLZ pendant sa course.
+                  
+                  Pour l’aider à faire le meilleur score, le joueur aura à sa disposition des items numériques appelés “buffs”, issus du lore Thugz achetables sur la marketplace ou déclenchables pendant la course."
+                  data-buttons='[
+                    {"text": "Site du studio du jeu", "url": "https://www.thugz-labs.com/#TheLauncher"},
+                    {"text": "Lien Play Store", "url": "https://play.google.com/store/apps/details?id=com.ThugzLabs.NoCaught&hl=fr"},
+                    {"text": "Lien App Store", "url": "https://apps.apple.com/us/app/call-911-by-thugz-labs/id6736412496"}
+                  ]'
+                  data-missions="Co-Fondateur du studio qui edite le jeu et directeur technique, Reaction du Game Design Document, Développement Unreal Engine 5, Statut: En production sur Android et iOS"
+                  data-images="./Public/Call9111.png,./Public/Call9112.png,./Public/Call9113.png">
+                  <img src="./Public/Carroussel/SlideCall911.png" data-hover="./Public/Carroussel/SlideCall911Hover.png" alt="Call 911">
+                </div>
+            </li>
+            <li class="carousel-slide">
+              <div class="project" 
+                data-title="War Thugz: Satochi City" 
+                data-description="War Thugz - Satoshi City est une production Thugs Labs réalisée par Ronan Menguy, co-fondateur de Graines de Pixels.
+                
+                War Thugz - Satoshi City est une guerre des gangs dans un Paris futuriste, qui se déroule après le “Grand Rekt”, la guerre ayant opposé les banques centrales aux adeptes Degens de la blockchain.
+                Construit avec Unreal Engine 5, il s’agit d’un jeu de tir stratégique en vue à la troisième personne, jouable en multijoueur et en solo."
+                data-buttons='[
+                  {"text": "Page Epic Games", "url": "https://store.epicgames.com/fr/p/war-thugz-satoshi-city-862f0f"},
+                  {"text": "Site du studio", "url": "https://www.thugz-labs.com/#TheLauncher"}
+                ]'
+                data-missions="Game Designer, Développeur Unreal Engine 5, Level Designer, Statut: Prototype développé pour PC Windows"
+                data-images="./Public/WarThugz1.png,./Public/WarThugz2.png,./Public/WarThugz3.png">
+                <img src="./Public/Carroussel/SlideSatoshi.png" data-hover="./Public/Carroussel/SlideSatoshiHover.png" alt="Atika">
+              </div>
+            </li>
+          </ul>
+        </div>
+      
+        <!-- Flèche droite -->
+        <button class="arrow right-arrow">&gt;</button>
       </div>
 
-      <!-- Projets DU STUDIO -->
-      <div class="project-grid">
-        <!-- Kelc'h AR Viya -->
-        <div class="project" 
-             data-title="Kelc'h AR Viya" 
-             data-description="Kelc'h AR Viya est une production Graines de Pixels réalisée par Graines de Pixels.
-             
-               Un Action/RPG d'exploration narratif mettant en scène des combats épiques et exploration spatiale.
-               
-               Cela fait maintenant 50 ans qu’ils sont arrivés sur Terre, bouleversant nos croyances et notre science. La Viya, jusqu’ici inconnue, régit notre existence maintenant. Et c’est grâce aux eraiés, dont le monde leur a été volé, que nous sommes capables de manipuler l’espace et pour certain, le temps. Mais ce qui a possédé leur foyer lorgne sur le nôtre et sur bien d’autres. C’est pourquoi je me suis enrôlé dans la Coalition pour explorer l'univers et fédérer l’Ervillia contre les Tosieas: nos créateurs et exterminateurs.​
-
-               Mais en moi, quelque chose cloche. Quelque chose que je ne saurais décrire. Est-ce la Viya qui m'appelle à elle? Est-ce que son écoulement touche à sa fin pour moi? Ou bien est-ce autre chose qui me désire et cherche à m'attirer à lui ou elle...​
-               
-               Nous sommes en 2150 et le joueur incarne un personnage qu'il créé et personnalise, Terrien(ne), s'enrôlant dans une coalition terrienne/éraiée. Le but de cette organisation est d’explorer l’espace pour trouver des alliés face aux Tosieas et aider les eraiés à reprendre leur planète perdue.​
-               
-               Mais parfois, ces civilisations sont déjà sous l'emprise des Tosieas, ou bien lorgne elles aussi sur nos mondes." 
-             data-buttons='[
-               {"text": "Lien officiel", "url": "https://www.lecycledelavia.com/"}
-             ]'
-             data-missions="Rédaction du Game Design Document, Développement Unreal Engine 5, Redaction du Level Design Document, Réalisation du Sound Design avec IA, Statut: Protoype en cours de développement sur PC Windows"
-             data-images="./Public/Kelc1.png,./Public/Kelc2.png,./Public/Kelc3.png">
-          <h2>Kelc'h AR Viya</h2>
-          <img src="./Public/KelcMain.png" alt="Kelc'h AR Viya">
-        </div>
-      </div>
-
-      <!-- TITRE & SEPARATION POUR HORS STUDIO -->
-      <div style="
-        text-align: center; 
-        margin-top: 3rem; 
-        margin-bottom: 1rem;
-      ">
-        <h2 style="
-          margin: 0;
-          font-size: 1.8rem;
-        ">
-          Projets réalisés avant création du studio
-        </h2>
-        <hr style="
-          width: 60px;
-          margin: 0.5rem auto;
-          border: none;
-          height: 3px;
-          background-color: #e09eff;
-        ">
-      </div>
-
-      <!-- Projets HORS STUDIO -->
-      <div class="project-grid">
-        <!-- Call 911 -->
-        <div class="project" 
-             data-title="Call 911" 
-             data-description="Call 911 est une production du studio Thugz Labs réalisée par Ronan Menguy, co-fondateur de Graines de Pixels.
-             
-             Call 911 est un runner infini dont l’objectif est de faire la course la plus longue en récoltant le plus de token DLZ, tout en échappant à la police qui poursuit le joueur.
-
-             Le parcourt se déroule dans les rues de Satoshi City et est jonché d’obstacles que le joueur doit éviter.
-             
-             L’objectif est de faire la course la plus longue possible. Le joueur doit aussi utiliser ses reflexes pour collecter le plus de DLZ pendant sa course.
-             
-             Pour l’aider à faire le meilleur score, le joueur aura à sa disposition des items numériques appelés “buffs”, issus du lore Thugz achetables sur la marketplace ou déclenchables pendant la course."
-             data-buttons='[
-               {"text": "Site du studio du jeu", "url": "https://www.thugz-labs.com/#TheLauncher"},
-               {"text": "Lien Play Store", "url": "https://play.google.com/store/apps/details?id=com.ThugzLabs.NoCaught&hl=fr"},
-               {"text": "Lien App Store", "url": "https://apps.apple.com/us/app/call-911-by-thugz-labs/id6736412496"}
-             ]'
-             data-missions="Co-Fondateur du studio qui edite le jeu et directeur technique, Reaction du Game Design Document, Développement Unreal Engine 5, Statut: En production sur Android et iOS"
-             data-images="./Public/Call9111.png,./Public/Call9112.png,./Public/Call9113.png">
-          <h2>Call 911</h2>
-          <img src="./Public/Call911Main.png" alt="Call 911">
-        </div>
-
-        <!-- Atika The Blue Quest -->
-        <div class="project" 
-             data-title="Atika The Blue Quest" 
-             data-description="Atika The Blue Quest est une production de CryptoWeb3 réalisée par Ronan Menguy, co-fondateur de Graines de Pixels.
-             
-             Atika the Blue Quest vous propulse dans CW3 Town à la poursuite d’Acid, le braqueur de token!
-             Poursuivez ce voleur, venez à bout des donjons qui jalonneront votre aventure et venez à bout de plus grand voleur de CW3 town.
-             Prenez votre part du butin!
-             
-             Fonctionnalités:
-             - Jeu d’aventure à la troisième personne
-             - Donjons avec ennemis, réflexion, puzzle et plateforme
-             - Donjons First person shooter
-             - Monde ouvert et système de quête à suivre
-             - Gain de Token pour les détenteurs de NFT"
-             data-buttons='[
-               {"text": "Page Epic Games", "url": "https://store.epicgames.com/fr/p/atika-the-blue-quest-947d2d"},
-               {"text": "Page Play Store", "url": "https://play.google.com/store/apps/details?id=com.cw3.atikathebluequest&hl=fr"}
-             ]'
-             data-missions="Game Designer, Développeur Unreal Engine 5, Level Designer, Sound Designer, Statut: En produciton sur PC Windows (Epic Game) et Android"
-             data-images="./Public/Atika1.png,./Public/Atika2.png,./Public/Atika3.png">
-          <h2>Atika The Blue Quest</h2>
-          <img src="./Public/AtikaMain.jpeg" alt="Call 911">
-        </div>
-
-        <!-- War Thugz: Satochi City -->
-        <div class="project" 
-             data-title="War Thugz: Satochi City" 
-             data-description="War Thugz - Satoshi City est une production Thugs Labs réalisée par Ronan Menguy, co-fondateur de Graines de Pixels.
-             
-             War Thugz - Satoshi City est une guerre des gangs dans un Paris futuriste, qui se déroule après le “Grand Rekt”, la guerre ayant opposé les banques centrales aux adeptes Degens de la blockchain.
-             Construit avec Unreal Engine 5, il s’agit d’un jeu de tir stratégique en vue à la troisième personne, jouable en multijoueur et en solo."
-             data-buttons='[
-               {"text": "Page Epic Games", "url": "https://store.epicgames.com/fr/p/war-thugz-satoshi-city-862f0f"},
-               {"text": "Site du studio", "url": "https://www.thugz-labs.com/#TheLauncher"}
-             ]'
-             data-missions="Game Designer, Développeur Unreal Engine 5, Level Designer, Statut: Prototype développé pour PC Windows"
-             data-images="./Public/WarThugz1.png,./Public/WarThugz2.png,./Public/WarThugz3.png">
-          <h2>War Thugz: Satochi City</h2>
-          <img src="./Public/WarThugzMain.png" alt="Call 911">
-        </div>
-      </div>
     </section>
 
     <!-- SECTION PROJECT-DETAILS (inchangée) -->
