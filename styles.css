@@ -476,6 +476,9 @@ main {
   min-width: 30%; /* Chaque slide prend la largeur entière */
   position: relative;
   text-align: center;
+  transition: transform 0.5s ease-in-out, z-index 0.5s ease-in-out; /* Transition fluide */
+  z-index: 1; /* Niveau par défaut */
+  margin: 2%;
 }
 .carousel-slide img {
   width: 100%;
@@ -484,12 +487,16 @@ main {
 }
 /* Effet au survol */
 .carousel-slide:hover {
-  transform: scale(1.05); /* Agrandit légèrement le conteneur */
+  transform: scale(1.2); /* Grossir de 20% */
+  z-index: 10; /* Amène l'image au premier plan */
+}
+.carousel-slide img {
+  transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out; /* Animation fluide */
 }
 .carousel-slide:hover img {
-  transform: scale(1.1); /* Zoom de l'image */
-  filter: brightness(1.2); /* Rendre l'image plus lumineuse */
+  filter: brightness(1.2); /* Augmenter la luminosité */
 }
+
 /* Flèches de navigation */
 .arrow {
   position: absolute;
