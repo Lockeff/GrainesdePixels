@@ -343,6 +343,14 @@ main {
   display:flex;
 }
 
+.flechebas{
+  transform: rotate(90deg); transform-origin: center center; padding-top: 10%; width: 10%; height: 10%; padding-right: 5%;
+}
+
+.flechedroite{
+  transform: rotate(90deg); transform-origin: center center; padding-top: 10%; width: 10%; height: 10%; padding-right: 5%;
+}
+
 
 .TexteCentre{
   text-align: center;
@@ -453,6 +461,7 @@ main {
 .carousel {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   width: 80%;
   overflow: hidden;
@@ -462,7 +471,7 @@ main {
 /* Conteneur des slides */
 .carousel-track-container {
   overflow: hidden;
-  width: 100%;
+  width: 80%;
 }
 .carousel-track {
   list-style: none; /* Supprime les puces (bullet points) */
@@ -537,19 +546,78 @@ main {
   padding: 2rem;
 }
 
-/* Détails du projet */
-#project-details .project-detail-content {
+/* DETAIL PROJET */
+/* BANNIÈRE */
+.banner-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Ajoutez un border-radius ou autre si vous le souhaitez */
+}
+
+/* CONTENU */
+.project-detail-content {
+  /* Retirer le background/box-shadow si vous en aviez un : */
+  background: none;
+  box-shadow: none;
   padding: 2rem;
-  background: linear-gradient(145deg, #3a004e, #000000); /* Dégradé prune */
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
-.project-images img {
-  width: calc(33.33% - 1rem);
-  margin: 0.5rem;
+.project-detail-content p, ul{
+  font-size: 1rem;
+}
+
+
+/* Titre en DIN Pro italic (assurez-vous d’avoir importé la police DIN Pro) */
+.din-pro-italic {
+  font-family: "DIN Pro", sans-serif; /* ou la police que vous avez nommée */
+  font-style: italic;
+  /* Autres styles possibles : color, font-size, etc. */
+}
+
+/************ DIAPORAMA ************/
+.diaporama {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Grande image du diaporama */
+.big-image img {
+  width: 80%;
+  height: auto;
   border-radius: 8px;
 }
-/* Liens */
+
+/* Thumbnails (miniatures) */
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap; /* Retour à la ligne si trop d’images */
+  gap: 0.5rem;
+  justify-content: center; /* Centrer les miniatures */
+}
+.thumbnail {
+  width: 120px;      /* Ajustez selon votre mise en page */
+  height: auto;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+.thumbnail.active {
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+}
+
+/************ MISSIONS ************/
+#project-missions {
+  list-style: disc; /* Par exemple, ou square, etc. */
+  margin-left: 1.2rem;
+}
+
+/************ LIENS (BOUTONS) ************/
 .project-links {
   margin-top: 20px;
   display: flex;
@@ -557,28 +625,14 @@ main {
 }
 .project-button {
   padding: 10px 20px;
-  background-color: #171717; /* Prune soutenu */
+  background-color: #171717; /* Couleur prune soutenu */
   color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 .project-button:hover {
-  background-color: #3a004e; /* Prune clair */
-}
-/* Epic Link */
-.epic-link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  background-color: #171717; /* Prune */
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-}
-.epic-link:hover {
-  background-color: #dc9bfb; /* Prune clair */
+  background-color: #3a004e; /* Ou la couleur que vous souhaitez */
 }
 
 /* -------------------- */
@@ -714,11 +768,19 @@ main {
 @media (max-width: 1024px) {
   .profil {
     flex-direction: column;
-    width: 80%;
+    width: 60%;
   }
 
   .Accueil .text-container {
     margin-top: 10%;
+  }
+
+  .Accueil .text-container img{
+    width: 30%;
+  }
+
+  .Accueil .text-container p{
+    font-size: 1rem;
   }
 
   .image-container {
@@ -746,6 +808,10 @@ main {
   #contact {
     max-width: 90%;
   }
+
+  .carousel-slide {
+    min-width: 50%; /* Chaque slide prend 50% de la largeur */
+  }
 }
 
 /* Mobiles (max-width: 768px) */
@@ -753,7 +819,7 @@ main {
 
   .profil {
     flex-direction: column;
-    width: 80%;
+    width: 60%;
   }
   .image-container {
     display: block;
@@ -765,6 +831,18 @@ main {
     margin-top: 10%;
   }
 
+  .Accueil .text-container img{
+    width: 40%;
+  }
+
+  .Accueil .text-container p{
+    font-size: 0.9rem;
+  }
+
+  .Accueil h1{
+    font-size: 1.6rem;
+  }
+
   .project {
     max-width: 90%;
   }
@@ -772,12 +850,34 @@ main {
   .contact {
     gap: 1rem;
   }
+
+  .carousel-slide {
+    min-width: 100%; /* Chaque slide prend toute la largeur */
+  }
+  .flechebas{
+    padding-right: 0%;
+    padding-left: 10%;
+  }
+  
+  .flechedroite{
+    padding-right: 0%;
+    padding-left: 5%;
+  }
 }
 
 /* Petits Mobiles (max-width: 480px) */
 @media (max-width: 480px) {
   nav ul li a {
     font-size: 0.9rem;
+  }
+
+  .profil {
+    flex-direction: column;
+    width: 60%;
+  }
+
+  .Accueil h1{
+    font-size: 1.4rem;
   }
 
   .profil h1 {
@@ -798,6 +898,13 @@ main {
     margin-top: 10%;
   }
 
+  .Accueil .text-container img{
+    width: 50%;
+  }
+  .Accueil .text-container p{
+    font-size: 0.8rem;
+  }
+
   .project h2 {
     font-size: 1rem;
   }
@@ -813,5 +920,19 @@ main {
 
   .contact button {
     font-size: 0.9rem;
+  }
+
+  .carousel-slide {
+    min-width: 100%; /* Chaque slide prend toute la largeur */
+  }
+
+  .flechebas{
+    padding-right: 0%;
+    padding-left: 10%;
+  }
+  
+  .flechedroite{
+    padding-right: 0%;
+    padding-left: 5%;
   }
 }

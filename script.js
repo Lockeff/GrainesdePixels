@@ -1,138 +1,213 @@
 document.addEventListener('DOMContentLoaded', () => {
-  //Birger menu mobile
+  // === 1) MENU BURGER MOBILE ===
   const burger = document.getElementById('burger-menu');
-    const navUl = document.querySelector('nav ul');
+  const navUl = document.querySelector('nav ul');
 
-    burger.addEventListener('click', () => {
-      navUl.classList.toggle('nav-active');
+  burger.addEventListener('click', () => {
+    navUl.classList.toggle('nav-active');
   });
+
+  // === 2) NAVIGATION ENTRE SECTIONS PAR LIENS ===
   const links = document.querySelectorAll('nav ul li a, a[href^="#"]'); // Sélectionne les liens de navigation et internes
   const sections = document.querySelectorAll('.content-section');
   const projectDetailsSection = document.getElementById('project-details');
-  const headerHeight = document.querySelector('header').offsetHeight; // Récupère la hauteur du bandeau
+  const headerHeight = document.querySelector('header').offsetHeight; // Hauteur de votre header (si existant)
 
   // Fonction pour gérer les \n dans les descriptions
   function processLineBreaks(text) {
     return text.replace(/\n/g, '<br>');
   }
 
-  // Fonction pour scroller avec un offset
+  // Fonction pour scroller avec un offset (pour éviter que le header ne cache le titre)
   function scrollToSectionWithOffset(section) {
-    const additionalOffset = 100; // Ajoute un espace supplémentaire de 20px
     const sectionTop = section.getBoundingClientRect().top + window.scrollY - (headerHeight + 150);
     window.scrollTo({ top: sectionTop, behavior: 'smooth' });
   }
 
-  // Navigation entre les sections
+  // Au clic sur un lien de nav, on masque toutes les sections puis on affiche la cible
   links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-
-      // Masque toutes les sections
       sections.forEach(section => section.classList.add('hidden'));
 
-      // Affiche la section cible
       const targetId = link.getAttribute('href').substring(1);
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
         targetSection.classList.remove('hidden');
-        scrollToSectionWithOffset(targetSection); // Utilise le défilement avec offset
+        scrollToSectionWithOffset(targetSection);
       }
     });
   });
 
-//Carrroussel
+  // === 3) CARROUSEL (SI PRÉSENT DANS LA PAGE) ===
   const track = document.querySelector('.carousel-track');
-  const slides = Array.from(track.children);
-  const leftArrow = document.querySelector('.left-arrow');
-  const rightArrow = document.querySelector('.right-arrow');
-  let currentIndex = 0;
-  // Fonction pour changer de slide
-  const updateSlide = (index) => {
-    track.style.transform = `translateX(-${index * 100}%)`;
-  };
-  // Navigation à gauche
-  leftArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-    updateSlide(currentIndex);
-  });
-  // Navigation à droite
-  rightArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-    updateSlide(currentIndex);
-  });
-  // Récupère toutes les images du carrousel
-  const carouselImages = document.querySelectorAll('.carousel-slide img');
-  carouselImages.forEach((img) => {
-    const originalSrc = img.src; // URL de l'image originale
-    const hoverSrc = img.dataset.hover; // URL de l'image alternative
-    // Changer l'image au survol
-    img.addEventListener('mouseenter', () => {
-      img.src = hoverSrc;
-    });
-    // Restaurer l'image originale lorsque la souris quitte
-    img.addEventListener('mouseleave', () => {
-      img.src = originalSrc;
-    });
-  });
+  if (track) {
+    const slides = Array.from(track.children);
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+    let currentIndex = 0;
 
-  // Gestion des projets
+    // Fonction pour changer de slide
+    const updateSlide = (index) => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    };
+
+    // Navigation à gauche
+    leftArrow.addEventListener('click', () => {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+      updateSlide(currentIndex);
+    });
+
+    // Navigation à droite
+    rightArrow.addEventListener('click', () => {
+      currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+      updateSlide(currentIndex);
+    });
+
+    // Gérer le survol des images (changement de src)
+    const carouselImages = document.querySelectorAll('.carousel-slide img');
+    carouselImages.forEach((img) => {
+      const originalSrc = img.src;
+      const hoverSrc = img.dataset.hover;
+      img.addEventListener('mouseenter', () => {
+        img.src = hoverSrc;
+      });
+      img.addEventListener('mouseleave', () => {
+        img.src = originalSrc;
+      });
+    });
+  }
+
+  // === 4) GESTION DE L'AFFICHAGE DES PROJETS (SECTION #project-details) ===
   const projects = document.querySelectorAll('.project');
   projects.forEach(project => {
     project.addEventListener('click', () => {
-      const title = project.getAttribute('data-title');
-      const description = processLineBreaks(project.getAttribute('data-description'));
-      const missions = project.getAttribute('data-missions').split(',');
-      const images = project.getAttribute('data-images').split(',');
-      const buttons = JSON.parse(project.getAttribute('data-buttons') || '[]');
+      // Récupérer les attributs data-*
+      const title = project.getAttribute('data-title') || '';
+      const rawDescription = project.getAttribute('data-description') || '';
+      const description = processLineBreaks(rawDescription);  // Gérer les \n
+      const missionsStr = project.getAttribute('data-missions') || '';
+      const bannerSrc = project.getAttribute('data-banner') || '';
 
-      // Mise à jour des détails du projet
+      // Boutons
+      let buttons = [];
+      const buttonsData = project.getAttribute('data-buttons');
+      if (buttonsData) {
+        try {
+          buttons = JSON.parse(buttonsData); // ex: [ {text: "Lien officiel", url: "https://..." } ]
+        } catch (e) {
+          console.warn('Erreur parse JSON data-buttons:', e);
+        }
+      }
+
+      // Images du diaporama (Dark/Glow/Big) => JSON
+      let diapoImages = [];
+      const imagesData = project.getAttribute('data-images') || '[]';
+      try {
+        diapoImages = JSON.parse(imagesData);
+      } catch (e) {
+        console.warn('Erreur parse JSON data-images:', e);
+      }
+
+      // === Injecter dans la section #project-details ===
+
+      // 1) Bannière
+      const projectBanner = document.getElementById('project-banner');
+      projectBanner.src = bannerSrc;
+
+      // 2) Titre
       document.getElementById('project-title').textContent = title;
+
+      // 3) Description
       document.getElementById('project-description').innerHTML = description;
 
+      // 4) Missions (séparées par des virgules)
       const missionList = document.getElementById('project-missions');
       missionList.innerHTML = '';
-      missions.forEach(mission => {
-        const li = document.createElement('li');
-        li.textContent = mission.trim();
-        missionList.appendChild(li);
-      });
+      if (missionsStr.trim() !== '') {
+        const missions = missionsStr.split(',');
+        missions.forEach(m => {
+          const li = document.createElement('li');
+          li.textContent = m.trim();
+          missionList.appendChild(li);
+        });
+      }
 
-      const imagesContainer = document.getElementById('project-images');
-      imagesContainer.innerHTML = '';
-      images.forEach(image => {
-        const img = document.createElement('img');
-        img.src = image.trim();
-        img.alt = `Image ${title}`;
-        imagesContainer.appendChild(img);
-      });
-
+      // 5) Liens (boutons)
       const linksContainer = document.getElementById('project-links');
       linksContainer.innerHTML = '';
-      buttons.forEach(button => {
+      buttons.forEach(btn => {
         const linkButton = document.createElement('a');
-        linkButton.href = button.url;
-        linkButton.textContent = button.text;
+        linkButton.href = btn.url;
+        linkButton.textContent = btn.text;
         linkButton.target = '_blank';
         linkButton.classList.add('project-button');
         linksContainer.appendChild(linkButton);
       });
 
-      // Masque toutes les sections et affiche les détails du projet
-      sections.forEach(section => section.classList.add('hidden'));
+      // 6) Diaporama : grande image (#current-image) + miniatures (#thumbnails-container)
+      const currentImage = document.getElementById('current-image');
+      const thumbnailsContainer = document.getElementById('thumbnails-container');
+
+      // Vider avant de régénérer
+      currentImage.src = '';
+      thumbnailsContainer.innerHTML = '';
+
+      if (diapoImages.length > 0) {
+        // Par défaut, on affiche la première image en grand
+        currentImage.src = diapoImages[0].big;
+
+        // Générer toutes les miniatures
+        diapoImages.forEach((imgObj, index) => {
+          const thumb = document.createElement('img');
+          thumb.classList.add('thumbnail');
+
+          if (index === 0) {
+            thumb.classList.add('active');
+            thumb.src = imgObj.dark; // La première est active => dark
+          } else {
+            thumb.src = imgObj.glow; // Les suivantes => glow
+          }
+
+          // Stocker les chemins dans le dataset
+          thumb.dataset.big = imgObj.big;
+          thumb.dataset.dark = imgObj.dark;
+          thumb.dataset.glow = imgObj.glow;
+
+          // Gestion du clic sur la miniature
+          thumb.addEventListener('click', () => {
+            // Mettre à jour la grande image
+            currentImage.src = thumb.dataset.big;
+
+            // Réinitialiser toutes les miniatures
+            const allThumbs = thumbnailsContainer.querySelectorAll('.thumbnail');
+            allThumbs.forEach(t => {
+              t.classList.remove('active');
+              t.src = t.dataset.glow;
+            });
+
+            // Activer celle qu'on vient de cliquer
+            thumb.classList.add('active');
+            thumb.src = thumb.dataset.dark;
+          });
+
+          thumbnailsContainer.appendChild(thumb);
+        });
+      }
+
+      // === Afficher la section détail, masquer les autres sections ===
+      sections.forEach(s => s.classList.add('hidden'));
       projectDetailsSection.classList.remove('hidden');
-      scrollToSectionWithOffset(projectDetailsSection); // Utilise le défilement avec offset
+      scrollToSectionWithOffset(projectDetailsSection);
     });
   });
 
-  // Gestion du formulaire de contact avec EmailJS
+  // === 5) FORMULAIRE DE CONTACT AVEC EMAILJS ===
   const form = document.getElementById('contact-form');
   const spinner = document.getElementById('loading-spinner');
-
-  // Assurez-vous que le spinner est masqué au chargement
+  // Masquer le spinner au chargement
   spinner.classList.add('hiddenspinner');
 
-  // Gestion du formulaire de contact
   form.addEventListener('submit', function (e) {
     e.preventDefault(); // Empêche le rechargement de la page
 
