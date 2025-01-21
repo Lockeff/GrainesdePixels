@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
+      navUl.classList.toggle('nav-active');
       sections.forEach(section => section.classList.add('hidden'));
 
       const targetId = link.getAttribute('href').substring(1);
