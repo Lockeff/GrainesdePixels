@@ -297,6 +297,7 @@ nav ul li a:hover {
   max-width: 90%;
   margin-right: 15%;
   margin-left: 15%;
+  padding-top: 2%;
 }
 
 /* Image */
@@ -475,6 +476,13 @@ nav ul li a:hover {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
+.carousel-trackTIER {
+  list-style: none; /* Supprime les puces (bullet points) */
+  padding: 0; /* Supprime les marges internes du conteneur */
+  margin: 0; /* Supprime les marges externes du conteneur */
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
 /* Style pour chaque slide */
 .carousel-slide {
   min-width: 30%; /* Chaque slide prend la largeur entière */
@@ -518,6 +526,12 @@ nav ul li a:hover {
   left: 10px;
 }
 .right-arrow {
+  right: 10px;
+}
+.left-arrowTIER {
+  left: 10px;
+}
+.right-arrowTIER {
   right: 10px;
 }
 .arrow:hover {
@@ -759,7 +773,7 @@ nav ul li a:hover {
 
 /* Responsive Design */
 
-@media (max-width: 1800px) {
+@media (max-width: 1550px) {
 
   .content-section {
     margin-top: 7%

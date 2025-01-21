@@ -46,7 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = Array.from(track.children);
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
+    const leftArrowTIER = document.querySelector('.left-arrowTIER');
+    const rightArrowTIER = document.querySelector('.right-arrowTIER');
     let currentIndex = 0;
+    let currentIndexTIER = 0;
 
     // Fonction pour changer de slide
     const updateSlide = (index) => {
@@ -64,6 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
       currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
       updateSlide(currentIndex);
     });
+
+    // Navigation à gauche
+    leftArrowTIER.addEventListener('click', () => {
+      currentIndexTIER = (currentIndexTIER > 0) ? currentIndexTIER - 1 : slides.length - 1;
+      updateSlide(currentIndexTIER);
+    });
+
+    // Navigation à droite
+    rightArrowTIER.addEventListener('click', () => {
+      currentIndexTIER = (currentIndexTIER < slides.length - 1) ? currentIndexTIER + 1 : 0;
+      updateSlide(currentIndexTIER);
+    });
+
+    
 
     // Gérer le survol des images (changement de src)
     const carouselImages = document.querySelectorAll('.carousel-slide img');
