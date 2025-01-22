@@ -345,7 +345,7 @@ nav ul li a:hover {
 }
 
 .flechedroite{
-  transform: rotate(90deg); transform-origin: center center; padding-top: 10%; width: 10%; height: 10%; padding-right: 5%;
+   width: 10%; height: 10%; padding-right: 5%;
 }
 
 
@@ -633,12 +633,15 @@ nav ul li a:hover {
   gap: 10px;
 }
 .project-button {
+  all: unset;
   padding: 10px 20px;
   background-color: #171717; /* Couleur prune soutenu */
   color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-family: 'Poxel', sans-serif;
 }
 .project-button:hover {
   background-color: #3a004e; /* Ou la couleur que vous souhaitez */
@@ -680,7 +683,7 @@ nav ul li a:hover {
   border-radius: 50px; /* Coins arrondis */
   padding: 5px; /* Espacement interne pour créer de l'air autour de l'image */
   box-shadow: 0 0 10px rgba(224, 158, 255, 0.5); /* Effet lumineux autour */
-  
+
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -703,35 +706,16 @@ nav ul li a:hover {
 
 /* Bouton avec image */
 .envoyerbutton {
-  display: inline-block;
-  text-decoration: none; /* Supprime le soulignement */
-  border: none; /* Supprime les bordures */
-  cursor: pointer; /* Curseur en main */
-  background: none; /* Supprime la couleur de fond */
-  border: none; /* Supprime la bordure */
-  padding: 0; /* Supprime les marges internes */
-  margin: 0; /* Supprime les marges externes */
-  transition: transform 0.3s, box-shadow 0.3s; /* Animation fluide */
+  padding: 10px 20px;
+  background-color: #171717; /* Couleur prune soutenu */
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
-.envoyerbutton img {
-  display: block; /* Supprime les espaces indésirables */
-  width: 300px; /* Largeur fixée */
-  height: auto; /* Conserve les proportions */
-  border-radius: 10px; /* Coins arrondis */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre pour effet 3D */
-  transition: transform 0.3s, box-shadow 0.3s; /* Animation fluide */
+.envoyerbutton:hover{
+  background-color: #3a004e; /* Ou la couleur que vous souhaitez */
 }
-/* Effet au survol */
-.envoyerbutton:hover img {
-  transform: scale(1.1); /* Agrandissement au survol */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Accentuation de l'ombre */
-}
-/* Effet au clic */
-.envoyerbutton:active img {
-  transform: scale(0.95); /* Réduction au clic */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre */
-}
-
 /* Style pour masquer/afficher le spinner */
 .hiddenspinner {
   display: none !important; /* Forcer le masquage en priorité */
@@ -832,6 +816,11 @@ nav ul li a:hover {
   .content-section{
     margin-top: 10%;
   }
+  .flechedroite{
+    padding-top: 5%;
+  }
+  
+  
 }
 
 /* Mobiles (max-width: 768px) */
@@ -880,8 +869,9 @@ nav ul li a:hover {
   }
   
   .flechedroite{
-    padding-right: 0%;
-    padding-left: 5%;
+    padding-right: 10%;
+    padding-left: 0%;
+    padding-top: 5%;
   }
   .content-section{
     margin-top: 0;
@@ -970,11 +960,13 @@ nav ul li a:hover {
   .flechebas{
     padding-right: 0%;
     padding-left: 10%;
+    padding-top: 15%;
   }
   
   .flechedroite{
-    padding-right: 0%;
-    padding-left: 5%;
+    padding-right: 10%;
+    padding-left: 0%;
+    padding-top: 15%;
   }
 
   .content-section{
