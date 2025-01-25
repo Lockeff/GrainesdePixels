@@ -300,6 +300,14 @@ nav ul li a:hover {
   padding-top: 2%;
 }
 
+#qui-suis-je{
+  background-image: url('./Public/Background.png'); /* Chemin vers l'image */
+  background-size: cover; /* L'image couvre toute la section */
+  background-position: center; /* Centrer l'image */
+  background-repeat: no-repeat; /* Éviter les répétitions */
+
+}
+
 /* Image */
 .image-container {
   display: flex;
@@ -529,10 +537,9 @@ nav ul li a:hover {
   right: 10px;
 }
 .left-arrowTIER {
-  left: 10px;
+  
 }
 .right-arrowTIER {
-  right: 10px;
 }
 .arrow:hover {
   background: rgba(255, 255, 255, 0.8);
@@ -545,6 +552,10 @@ nav ul li a:hover {
   align-items: center;
   height: 100%;
   flex-direction: column;
+  background-image: url('./Public/Background.png'); /* Chemin vers l'image */
+  background-size: cover; /* L'image couvre toute la section */
+  background-position: center; /* Centrer l'image */
+  background-repeat: no-repeat; /* Éviter les répétitions */
 }
 #mes-projets .project-grid {
   display: flex;
@@ -654,8 +665,10 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   padding: 3rem 1rem;
-  max-width: 700px;
-  margin: 3rem auto;
+  background-image: url('./Public/Background.png'); /* Chemin vers l'image */
+  background-size: cover; /* L'image couvre toute la section */
+  background-position: center; /* Centrer l'image */
+  background-repeat: no-repeat; /* Éviter les répétitions */
 }
 
 .contact {
