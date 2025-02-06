@@ -476,6 +476,7 @@ nav ul li a:hover {
 .carousel-track-container {
   overflow: hidden;
   width: 80%;
+  padding: 5%;
 }
 .carousel-track {
   list-style: none; /* Supprime les puces (bullet points) */
