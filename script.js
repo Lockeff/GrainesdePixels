@@ -4,31 +4,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const navUl = document.querySelector('nav ul');
 
   burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
     navUl.classList.toggle('nav-active');
   });
 
   // === 2) NAVIGATION ENTRE SECTIONS PAR LIENS ===
-  const links = document.querySelectorAll('nav ul li a, a[href^="#"]'); // Sélectionne les liens de navigation et internes
+  const links = document.querySelectorAll('nav ul li a, a[href^="#"]');
   const sections = document.querySelectorAll('.content-section');
   const projectDetailsSection = document.getElementById('project-details');
-  const headerHeight = document.querySelector('header').offsetHeight; // Hauteur de votre header (si existant)
+  const headerHeight = document.querySelector('header').offsetHeight;
 
   // Fonction pour gérer les \n dans les descriptions
   function processLineBreaks(text) {
     return text.replace(/\n/g, '<br>');
   }
 
-  // Fonction pour scroller avec un offset (pour éviter que le header ne cache le titre)
+  // Fonction pour scroller avec un offset
   function scrollToSectionWithOffset(section) {
     const sectionTop = section.getBoundingClientRect().top + window.scrollY - (headerHeight + 150);
     window.scrollTo({ top: sectionTop, behavior: 'smooth' });
   }
 
-  // Au clic sur un lien de nav, on masque toutes les sections puis on affiche la cible
+  // Au clic sur un lien de nav
   links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      navUl.classList.toggle('nav-active');
+      navUl.classList.remove('nav-active');
+      burger.classList.remove('active');
       sections.forEach(section => section.classList.add('hidden'));
 
       const targetId = link.getAttribute('href').substring(1);
@@ -40,61 +42,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // === 3) CARROUSEL (SI PRÉSENT DANS LA PAGE) ===
+  // === 3) CARROUSEL ===
   const track = document.querySelector('.carousel-track');
+  const trackTIER = document.querySelector('.carousel-trackTIER');
+  
   if (track) {
     const slides = Array.from(track.children);
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
+    let currentIndex = 0;
+
+    if (leftArrow && rightArrow) {
+      // Fonction pour changer de slide
+      const updateSlide = (index) => {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      };
+
+      // Navigation à gauche
+      leftArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+        updateSlide(currentIndex);
+      });
+
+      // Navigation à droite
+      rightArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+        updateSlide(currentIndex);
+      });
+    }
+  }
+
+  if (trackTIER) {
+    const slidesTIER = Array.from(trackTIER.children);
     const leftArrowTIER = document.querySelector('.left-arrowTIER');
     const rightArrowTIER = document.querySelector('.right-arrowTIER');
-    let currentIndex = 0;
     let currentIndexTIER = 0;
 
-    // Fonction pour changer de slide
-    const updateSlide = (index) => {
-      track.style.transform = `translateX(-${index * 100}%)`;
-    };
+    if (leftArrowTIER && rightArrowTIER) {
+      // Fonction pour changer de slide
+      const updateSlideTIER = (index) => {
+        trackTIER.style.transform = `translateX(-${index * 100}%)`;
+      };
 
-    // Navigation à gauche
-    leftArrow.addEventListener('click', () => {
-      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-      updateSlide(currentIndex);
-    });
+      // Navigation à gauche
+      leftArrowTIER.addEventListener('click', () => {
+        currentIndexTIER = (currentIndexTIER > 0) ? currentIndexTIER - 1 : slidesTIER.length - 1;
+        updateSlideTIER(currentIndexTIER);
+      });
 
-    // Navigation à droite
-    rightArrow.addEventListener('click', () => {
-      currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-      updateSlide(currentIndex);
-    });
+      // Navigation à droite
+      rightArrowTIER.addEventListener('click', () => {
+        currentIndexTIER = (currentIndexTIER < slidesTIER.length - 1) ? currentIndexTIER + 1 : 0;
+        updateSlideTIER(currentIndexTIER);
+      });
+    }
+  }
 
-    // Navigation à gauche
-    leftArrowTIER.addEventListener('click', () => {
-      currentIndexTIER = (currentIndexTIER > 0) ? currentIndexTIER - 1 : slides.length - 1;
-      updateSlide(currentIndexTIER);
-    });
-
-    // Navigation à droite
-    rightArrowTIER.addEventListener('click', () => {
-      currentIndexTIER = (currentIndexTIER < slides.length - 1) ? currentIndexTIER + 1 : 0;
-      updateSlide(currentIndexTIER);
-    });
-
-    
-
-    // Gérer le survol des images (changement de src)
-    const carouselImages = document.querySelectorAll('.carousel-slide img');
-    carouselImages.forEach((img) => {
-      const originalSrc = img.src;
-      const hoverSrc = img.dataset.hover;
+  // Gérer le survol des images
+  const carouselImages = document.querySelectorAll('.carousel-slide img');
+  carouselImages.forEach((img) => {
+    const originalSrc = img.src;
+    const hoverSrc = img.dataset.hover;
+    if (hoverSrc) {
       img.addEventListener('mouseenter', () => {
         img.src = hoverSrc;
       });
       img.addEventListener('mouseleave', () => {
         img.src = originalSrc;
       });
-    });
-  }
+    }
+  });
 
   // === 4) GESTION DE L'AFFICHAGE DES PROJETS (SECTION #project-details) ===
   const projects = document.querySelectorAll('.project');

@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: 'DIN Pro', sans-serif;
   font-size: 20px;          /* Augmente la taille de base du texte */
-  line-height: 2;         /* Plus d’espace entre les lignes */
+  line-height: 2;         /* Plus d'espace entre les lignes */
   background-color: #0b0b0b;
   color: #ffffff;
 }
@@ -112,20 +112,35 @@ nav ul li a:hover {
   display: none;     /* On l'affiche en mobile via @media */
   flex-direction: column;
   cursor: pointer;
-  right: 0;
+  right: 20px;
+  position: absolute;
+  z-index: 1001;
+  width: 30px;
+  height: 25px;
+  justify-content: space-between;
 }
-.mobile{
-  display: flex;
-}
-.mobile img{
-  width: 10%;
-}
+
 .bar {
-  width: 25px; 
+  width: 100%; 
   height: 3px;
-  margin: 4px 0;
   background-color: #fff;
-  transition: 0.3s;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+/* Animation du burger en X */
+.burger.active .bar:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.burger.active .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.burger.active .bar:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
 }
 
 /* ==================== */
@@ -140,21 +155,22 @@ nav ul li a:hover {
   nav ul {
     position: absolute;
     top: 60px; /* Ajuste selon la hauteur réelle de ton header */
-    right: 0;
+    right: -100%;
     width: 100%; 
     background-color: #0b0b0b;
     flex-direction: column;
     align-items: center;
-    transform: translateY(-100vh);
-    transition: transform 0.4s ease-in-out;
+    transition: right 0.4s ease-in-out;
   }
   /* On affiche le menu quand on ajoute la classe .nav-active */
   nav ul.nav-active {
-    transform: translateY(0);
+    right: 0;
   }
   /* Les <li> sont empilés */
   nav ul li {
     margin: 1rem 0;
+    width: 100%;
+    text-align: center;
   }
   /* Ajuste la taille du logo si nécessaire en mobile */
   .logoheader {
@@ -207,12 +223,19 @@ nav ul li a:hover {
   text-align: center;
 }
 
+.Accueil .text-container img {
+  max-width: 300px;
+  width: 40%;
+  height: auto;
+  margin-bottom: 20px;
+}
 
 .Accueil .text-container p {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 0;
 }
+
 /* BLOCS DE NEWS */
 .news-section {
   margin: 2rem auto 0 auto;
@@ -264,11 +287,11 @@ nav ul li a:hover {
   box-shadow: 0 0 5px rgba(224, 158, 255, 0.5); /* Effet lumineux autour */
   margin-right: 1rem;
   margin-left: 1rem; /* Espace entre logo et texte */
-  flex-shrink: 0;     /* Évite que l’image se réduise en cas de texte long */
+  flex-shrink: 0;     /* Évite que l'image se réduise en cas de texte long */
 }
 
 .news-details {
-  flex: 1;            /* Le texte prend tout l’espace restant */
+  flex: 1;            /* Le texte prend tout l'espace restant */
 }
 
 .news-details h3 {
@@ -472,6 +495,12 @@ nav ul li a:hover {
   overflow: hidden;
   color: #fff;
 }
+
+/* Style spécifique pour le carrousel des productions tierces */
+.carousel.tierce {
+  width: 20%;
+}
+
 /* Conteneur des slides */
 .carousel-track-container {
   overflow: hidden;
@@ -589,7 +618,7 @@ nav ul li a:hover {
 }
 
 
-/* Titre en DIN Pro italic (assurez-vous d’avoir importé la police DIN Pro) */
+/* Titre en DIN Pro italic (assurez-vous d'avoir importé la police DIN Pro) */
 .din-pro-italic {
   font-family: "DIN Pro", sans-serif; /* ou la police que vous avez nommée */
   font-style: italic;
@@ -614,7 +643,7 @@ nav ul li a:hover {
 /* Thumbnails (miniatures) */
 .thumbnails {
   display: flex;
-  flex-wrap: wrap; /* Retour à la ligne si trop d’images */
+  flex-wrap: wrap; /* Retour à la ligne si trop d'images */
   gap: 0.5rem;
   justify-content: center; /* Centrer les miniatures */
 }
@@ -790,11 +819,12 @@ nav ul li a:hover {
     margin-top: 10%;
   }
 
-  .Accueil .text-container img{
+  .Accueil .text-container img {
     width: 30%;
+    max-width: 200px;
   }
 
-  .Accueil .text-container p{
+  .Accueil .text-container p {
     font-size: 1rem;
   }
 
@@ -855,11 +885,12 @@ nav ul li a:hover {
     margin-top: 10%;
   }
 
-  .Accueil .text-container img{
-    width: 40%;
+  .Accueil .text-container img {
+    width: 25%;
+    max-width: 150px;
   }
 
-  .Accueil .text-container p{
+  .Accueil .text-container p {
     font-size: 0.9rem;
   }
 
@@ -907,7 +938,7 @@ nav ul li a:hover {
 }
 
 .burger {
-  margin-bottom: 1%;
+  margin-bottom: -10%;
 }
 }
 
@@ -944,8 +975,9 @@ nav ul li a:hover {
     margin-top: 10%;
   }
 
-  .Accueil .text-container img{
-    width: 50%;
+  .Accueil .text-container img {
+    width: 20%;
+    max-width: 100px;
   }
   .Accueil .text-container p{
     font-size: 0.8rem;
@@ -1002,6 +1034,6 @@ nav ul li a:hover {
     font-size: 0.8rem;
 }
 .burger {
-  margin-bottom: 1%;
+  margin-bottom: -10%;
 }
 }
