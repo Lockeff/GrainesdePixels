@@ -107,16 +107,16 @@ async function loadAllImages() {
             await preloadImage(src);
             loadedImages++;
             updateProgress(loadedImages, totalImages);
+            
+            // Si on atteint 90%, on affiche le site
+            if (loadedImages / totalImages >= 0.9) {
+                const loader = document.getElementById('loader');
+                loader.classList.add('fade-out');
+                setTimeout(() => {
+                    loader.remove();
+                }, 500);
+            }
         }));
-
-        // Une fois tout chargé, masquer le loader
-        const loader = document.getElementById('loader');
-        loader.classList.add('fade-out');
-        
-        // Supprimer complètement le loader après l'animation
-        setTimeout(() => {
-            loader.remove();
-        }, 500);
 
     } catch (error) {
         console.error('Erreur lors du chargement des images:', error);
