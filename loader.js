@@ -1,18 +1,18 @@
 // Liste des images à précharger avec leurs dimensions optimales
 const imagesToLoad = [
-    { src: '/Public/2EtoilesMain.png', width: 1920, quality: 75 },
-    { src: '/Public/MainBackgroundTop.png', width: 1920, quality: 75 },
-    { src: '/Public/Background.png', width: 1920, quality: 75 },
-    { src: '/Public/BtnContact.png', width: 200, quality: 90 },
-    { src: '/Public/Btn_Envoyer.png', width: 200, quality: 90 },
-    { src: '/Public/Arrow.png', width: 100, quality: 90 },
-    { src: '/Public/Kelc2.png', width: 1920, quality: 75 },
-    { src: '/Public/Kelc3.png', width: 1920, quality: 75 },
-    { src: '/Public/KelcMain.png', width: 1920, quality: 75 },
-    { src: '/Public/Kelc1.png', width: 1920, quality: 75 },
-    { src: '/Public/GdP-Logo.png', width: 400, quality: 90 },
-    { src: '/Public/GdP-Logo sans fond.png', width: 400, quality: 90 },
-    { src: '/Public/iconAbout.png', width: 100, quality: 90 }
+    { src: '/public/2EtoilesMain.png', width: 1920, quality: 75 },
+    { src: '/public/MainBackgroundTop.png', width: 1920, quality: 75 },
+    { src: '/public/Background.png', width: 1920, quality: 75 },
+    { src: '/public/BtnContact.png', width: 200, quality: 90 },
+    { src: '/public/Btn_Envoyer.png', width: 200, quality: 90 },
+    { src: '/public/Arrow.png', width: 100, quality: 90 },
+    { src: '/public/Kelc2.png', width: 1920, quality: 75 },
+    { src: '/public/Kelc3.png', width: 1920, quality: 75 },
+    { src: '/public/KelcMain.png', width: 1920, quality: 75 },
+    { src: '/public/Kelc1.png', width: 1920, quality: 75 },
+    { src: '/public/GdP-Logo.png', width: 400, quality: 90 },
+    { src: '/public/GdP-Logo sans fond.png', width: 400, quality: 90 },
+    { src: '/public/iconAbout.png', width: 100, quality: 90 }
 ];
 
 // Fonction pour obtenir l'URL optimisée de Vercel
