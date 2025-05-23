@@ -14,7 +14,7 @@ body {
 /* Déclarer DIN Pro Bold */
 @font-face {
   font-family: 'DIN Pro';
-  src: url('./public/DIN-Pro-Bold-Italic.ttf') format('truetype');
+  src: url('./Public/DIN-Pro-Bold-Italic.ttf') format('truetype'); /* Correction du format */
   font-weight: bold;
   font-style: normal;
 }
@@ -22,7 +22,7 @@ body {
 /* Déclarer DIN Pro Italic */
 @font-face {
   font-family: 'DIN Pro';
-  src: url('./public/DinProItalic.otf') format('opentype');
+  src: url('./Public/DinProItalic.otf') format('opentype'); /* Correction du format */
   font-weight: normal;
   font-style: italic;
 }
@@ -30,7 +30,7 @@ body {
 /* Déclarer Poxel */
 @font-face {
   font-family: 'Poxel';
-  src: url('./public/poxel-font.ttf') format('opentype');
+  src: url('./Public/poxel-font.ttf') format('opentype'); /* Correction du format */
   font-weight: normal;
   font-style: normal;
 }
