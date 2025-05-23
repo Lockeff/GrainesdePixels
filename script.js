@@ -1,15 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
   // === 1) MENU BURGER MOBILE ===
-  const burger = document.getElementById('burger-menu');
-  const navUl = document.querySelector('nav ul');
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('nav ul');
+  const contentSections = document.querySelectorAll('.content-section');
 
   burger.addEventListener('click', () => {
+    nav.classList.toggle('nav-active');
     burger.classList.toggle('active');
-    navUl.classList.toggle('nav-active');
+    
+    // Ajouter/supprimer le flou sur toutes les sections de contenu
+    contentSections.forEach(section => {
+      section.classList.toggle('blur');
+    });
+  });
+
+  // Fermer le menu et enlever le flou si on clique en dehors
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('nav-active')) {
+      nav.classList.remove('nav-active');
+      burger.classList.remove('active');
+      contentSections.forEach(section => {
+        section.classList.remove('blur');
+      });
+    }
   });
 
   // === 2) NAVIGATION ENTRE SECTIONS PAR LIENS ===
-  const links = document.querySelectorAll('nav ul li a, a[href^="#"]');
+  const links = document.querySelectorAll('nav ul li a');
   const sections = document.querySelectorAll('.content-section');
   const projectDetailsSection = document.getElementById('project-details');
   const headerHeight = document.querySelector('header').offsetHeight;
@@ -25,20 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: sectionTop, behavior: 'smooth' });
   }
 
-  // Au clic sur un lien de nav
+  // Gestion des liens du menu
   links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      navUl.classList.remove('nav-active');
+      nav.classList.remove('nav-active');
       burger.classList.remove('active');
+      // Enlever le flou quand on clique sur un lien
+      contentSections.forEach(section => {
+        section.classList.remove('blur');
+      });
       sections.forEach(section => section.classList.add('hidden'));
-
       const targetId = link.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
-      if (targetSection) {
-        targetSection.classList.remove('hidden');
-        scrollToSectionWithOffset(targetSection);
-      }
+      document.getElementById(targetId).classList.remove('hidden');
     });
   });
 
@@ -183,50 +199,30 @@ document.addEventListener('DOMContentLoaded', () => {
       // 6) Diaporama : grande image (#current-image) + miniatures (#thumbnails-container)
       const currentImage = document.getElementById('current-image');
       const thumbnailsContainer = document.getElementById('thumbnails-container');
-
-      // Vider avant de régénérer
-      currentImage.src = '';
       thumbnailsContainer.innerHTML = '';
 
+      // Afficher la première image par défaut
       if (diapoImages.length > 0) {
-        // Par défaut, on affiche la première image en grand
         currentImage.src = diapoImages[0].big;
-
-        // Générer toutes les miniatures
-        diapoImages.forEach((imgObj, index) => {
-          const thumb = document.createElement('img');
-          thumb.classList.add('thumbnail');
-
-          if (index === 0) {
-            thumb.classList.add('active');
-            thumb.src = imgObj.dark; // La première est active => dark
-          } else {
-            thumb.src = imgObj.glow; // Les suivantes => glow
-          }
-
-          // Stocker les chemins dans le dataset
-          thumb.dataset.big = imgObj.big;
-          thumb.dataset.dark = imgObj.dark;
-          thumb.dataset.glow = imgObj.glow;
-
-          // Gestion du clic sur la miniature
-          thumb.addEventListener('click', () => {
-            // Mettre à jour la grande image
-            currentImage.src = thumb.dataset.big;
-
-            // Réinitialiser toutes les miniatures
-            const allThumbs = thumbnailsContainer.querySelectorAll('.thumbnail');
-            allThumbs.forEach(t => {
-              t.classList.remove('active');
-              t.src = t.dataset.glow;
-            });
-
-            // Activer celle qu'on vient de cliquer
-            thumb.classList.add('active');
-            thumb.src = thumb.dataset.dark;
+        
+        // Créer les miniatures
+        diapoImages.forEach((img, index) => {
+          const thumbnail = document.createElement('img');
+          thumbnail.src = img.glow;
+          thumbnail.alt = `Miniature ${index + 1}`;
+          thumbnail.classList.add('thumbnail');
+          if (index === 0) thumbnail.classList.add('active');
+          
+          thumbnail.addEventListener('click', () => {
+            // Mettre à jour l'image principale
+            currentImage.src = img.big;
+            
+            // Mettre à jour l'état actif des miniatures
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
           });
-
-          thumbnailsContainer.appendChild(thumb);
+          
+          thumbnailsContainer.appendChild(thumbnail);
         });
       }
 

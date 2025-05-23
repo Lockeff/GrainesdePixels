@@ -153,14 +153,19 @@ nav ul li a:hover {
   }
   /* On masque le menu horizontal et on le transforme en vertical */
   nav ul {
-    position: absolute;
-    top: 60px; /* Ajuste selon la hauteur réelle de ton header */
+    position: fixed;
+    top: 60px;
     right: -100%;
-    width: 100%; 
-    background-color: #0b0b0b;
+    width: 60%; /* Réduit la largeur du menu */
+    max-width: 300px; /* Largeur maximale */
+    background-color: rgba(11, 11, 11, 0.95); /* Fond légèrement transparent */
+    backdrop-filter: blur(10px); /* Flou derrière le menu */
     flex-direction: column;
     align-items: center;
     transition: right 0.4s ease-in-out;
+    border-radius: 0 0 0 20px; /* Coins arrondis en bas à gauche */
+    box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3); /* Ombre portée */
+    padding: 20px 0;
   }
   /* On affiche le menu quand on ajoute la classe .nav-active */
   nav ul.nav-active {
@@ -168,13 +173,30 @@ nav ul li a:hover {
   }
   /* Les <li> sont empilés */
   nav ul li {
-    margin: 1rem 0;
+    margin: 5%; /* Augmentation de la marge verticale à 6rem */
     width: 100%;
     text-align: center;
   }
   /* Ajuste la taille du logo si nécessaire en mobile */
   .logoheader {
     width: 15%;
+  }
+
+  .carousel-slide {
+    min-width: 100%; /* Chaque slide prend toute la largeur */
+  }
+
+  .carousel-slide img {
+    width: 80%; /* Réduit la taille de l'image */
+    margin: 0 auto; /* Centre l'image */
+  }
+
+  .carousel-slide:hover {
+    transform: scale(1.1); /* Réduit l'effet de zoom au survol */
+  }
+
+  .carousel.tierce {
+    width: 60%; /* Augmentation de la taille sur mobile */
   }
 }
 
@@ -187,7 +209,7 @@ nav ul li a:hover {
   position: absolute;
   width: 100%;
   top: 0;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.3s ease;
 }
 
 .content-section:not(.hidden) {
@@ -197,6 +219,12 @@ nav ul li a:hover {
 }
 
 .hidden {
+  pointer-events: none;
+}
+
+/* Style pour le flou quand le menu est ouvert */
+.content-section.blur {
+  filter: blur(5px);
   pointer-events: none;
 }
 
@@ -534,17 +562,17 @@ nav ul li a:hover {
   width: 100%;
   height: auto;
   display: block;
+  position: relative;
+  transition: filter 0.5s ease-in-out;
+  filter: brightness(0.3); /* Overlay plus sombre par défaut */
 }
 /* Effet au survol */
 .carousel-slide:hover {
   transform: scale(1.2); /* Grossir de 20% */
   z-index: 10; /* Amène l'image au premier plan */
 }
-.carousel-slide img {
-  transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out; /* Animation fluide */
-}
 .carousel-slide:hover img {
-  filter: brightness(1.2); /* Augmenter la luminosité */
+  filter: brightness(1); /* Retire l'overlay au survol */
 }
 
 /* Flèches de navigation */
@@ -633,33 +661,44 @@ nav ul li a:hover {
   margin-bottom: 2rem;
 }
 
-/* Grande image du diaporama */
-.big-image img {
-  width: 80%;
-  height: auto;
-  border-radius: 8px;
+/* Style pour les images dans les détails de projet */
+.big-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-/* Thumbnails (miniatures) */
+.big-image img {
+  width: 60%; /* Réduction de la taille de l'image */
+  height: auto;
+  object-fit: contain;
+}
+
 .thumbnails {
   display: flex;
-  flex-wrap: wrap; /* Retour à la ligne si trop d'images */
-  gap: 0.5rem;
-  justify-content: center; /* Centrer les miniatures */
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
+
 .thumbnail {
-  width: 120px;      /* Ajustez selon votre mise en page */
-  height: auto;
+  width: 15%;
   cursor: pointer;
-  border-radius: 8px;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border: 2px solid transparent;
+  filter: brightness(0.3); /* Overlay sombre par défaut */
 }
+
 .thumbnail:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  filter: brightness(1); /* Retire l'overlay au survol */
 }
+
 .thumbnail.active {
-  outline: 3px solid #fff;
-  outline-offset: -3px;
+  border-color: #e09eff;
+  filter: brightness(1); /* Image active sans overlay */
 }
 
 /************ MISSIONS ************/
@@ -909,6 +948,16 @@ nav ul li a:hover {
   .carousel-slide {
     min-width: 100%; /* Chaque slide prend toute la largeur */
   }
+
+  .carousel-slide img {
+    width: 80%; /* Réduit la taille de l'image */
+    margin: 0 auto; /* Centre l'image */
+  }
+
+  .carousel-slide:hover {
+    transform: scale(1.1); /* Réduit l'effet de zoom au survol */
+  }
+
   .flechebas{
     padding-right: 0%;
     padding-left: 10%;
@@ -925,13 +974,11 @@ nav ul li a:hover {
 
   nav ul li{
     width: 100%;
-    margin: 0%;
+    margin: 5%;
     top: 100%;
   }
 
-  nav ul{
-    top: 100%;
-  }
+
 
   .project-detail-content p, ul {
     font-size: 0.8rem;
@@ -940,6 +987,10 @@ nav ul li a:hover {
 .burger {
   margin-bottom: -10%;
 }
+
+  .carousel.tierce {
+    width: 60%; /* Augmentation de la taille sur mobile */
+  }
 }
 
 /* Petits Mobiles (max-width: 480px) */
@@ -1001,7 +1052,16 @@ nav ul li a:hover {
   }
 
   .carousel-slide {
-    min-width: 100%; /* Chaque slide prend toute la largeur */
+    min-width: 100%;
+  }
+
+  .carousel-slide img {
+    width: 70%; /* Encore plus petit sur très petit écran */
+    margin: 0 auto;
+  }
+
+  .carousel-slide:hover {
+    transform: scale(1.05); /* Effet de zoom encore plus réduit */
   }
 
   .flechebas{
@@ -1022,13 +1082,11 @@ nav ul li a:hover {
 
   nav ul li{
     width: 100%;
-    margin: 0%;
+    margin: 5%;
     top: 100%;
   }
 
-  nav ul{
-    top: 100%;
-  }
+
 
   .project-detail-content p, ul {
     font-size: 0.8rem;
@@ -1036,6 +1094,10 @@ nav ul li a:hover {
 .burger {
   margin-bottom: -10%;
 }
+
+  .carousel.tierce {
+    width: 80%; /* Encore plus large sur très petit écran */
+  }
 }
 
 /* Loader styles */
