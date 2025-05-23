@@ -9,6 +9,15 @@
   <link rel="icon" type="image/png" href="./Public/GdP-Logo.png">
 </head>
 <body>
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <img src="Public/GdP-Logo.png" alt="Logo" class="loader-logo">
+            <div class="loader-progress">
+                <div class="loader-bar"></div>
+            </div>
+            <p class="loader-text">Chargement...</p>
+        </div>
+    </div>
   <header>
   <nav class="navbar">
     <!-- Bouton burger (caché en desktop, visible en mobile) -->
@@ -384,5 +393,6 @@
   </main>
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
+  <script src="loader.js"></script>
 </body>
 </html>
