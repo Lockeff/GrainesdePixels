@@ -274,4 +274,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       );
   });
+
+  // Fonction pour obtenir l'URL optimisée de Vercel
+  function getOptimizedImageUrl(src, width = 1920, quality = 75) {
+    // Si déjà une URL absolue (http, https, data), ne rien faire
+    if (/^(https?:\/\/|data:)/.test(src)) return src;
+    // S'assurer que le chemin commence par un slash
+    if (!src.startsWith('/')) src = '/' + src.replace(/^\.\//, '');
+    // Si nous sommes en développement local, utiliser l'URL directe
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return src;
+    }
+    // En production, utiliser l'URL optimisée de Vercel
+    return `/_vercel/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`;
+  }
+
+  // Fonction pour optimiser toutes les images du site
+  function optimizeAllImages() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      // Ne pas optimiser les images qui sont déjà optimisées
+      if (img.src.includes('/_vercel/image')) return;
+
+      // Déterminer la largeur optimale en fonction de la classe
+      let width = 1920; // largeur par défaut
+      let quality = 75; // qualité par défaut
+
+      if (img.classList.contains('logoheader') || img.classList.contains('loader-logo')) {
+        width = 400;
+        quality = 90;
+      } else if (img.classList.contains('flechebas') || img.classList.contains('flechedroite') || img.classList.contains('bullet')) {
+        width = 100;
+        quality = 90;
+      } else if (img.classList.contains('news-logo')) {
+        width = 800;
+        quality = 80;
+      }
+
+      // Optimiser l'image source
+      img.src = getOptimizedImageUrl(img.src, width, quality);
+
+      // Optimiser l'image de hover si elle existe
+      if (img.dataset.hover) {
+        img.dataset.hover = getOptimizedImageUrl(img.dataset.hover, width, quality);
+      }
+    });
+  }
+
+  // Appeler la fonction d'optimisation après le chargement de la page
+  optimizeAllImages();
 });

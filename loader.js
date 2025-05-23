@@ -1,27 +1,38 @@
-// Liste des images à précharger
+// Liste des images à précharger avec leurs dimensions optimales
 const imagesToLoad = [
-    'Public/2EtoilesMain.png',
-    'Public/MainBackgroundTop.png',
-    'Public/Background.png',
-    'Public/BtnContact.png',
-    'Public/Btn_Envoyer.png',
-    'Public/Arrow.png',
-    'Public/Kelc2.png',
-    'Public/Kelc3.png',
-    'Public/KelcMain.png',
-    'Public/Kelc1.png',
-    'Public/GdP-Logo.png',
-    'Public/GdP-Logo sans fond.png',
-    'Public/iconAbout.png'
+    { src: '/Public/2EtoilesMain.png', width: 1920, quality: 75 },
+    { src: '/Public/MainBackgroundTop.png', width: 1920, quality: 75 },
+    { src: '/Public/Background.png', width: 1920, quality: 75 },
+    { src: '/Public/BtnContact.png', width: 200, quality: 90 },
+    { src: '/Public/Btn_Envoyer.png', width: 200, quality: 90 },
+    { src: '/Public/Arrow.png', width: 100, quality: 90 },
+    { src: '/Public/Kelc2.png', width: 1920, quality: 75 },
+    { src: '/Public/Kelc3.png', width: 1920, quality: 75 },
+    { src: '/Public/KelcMain.png', width: 1920, quality: 75 },
+    { src: '/Public/Kelc1.png', width: 1920, quality: 75 },
+    { src: '/Public/GdP-Logo.png', width: 400, quality: 90 },
+    { src: '/Public/GdP-Logo sans fond.png', width: 400, quality: 90 },
+    { src: '/Public/iconAbout.png', width: 100, quality: 90 }
 ];
 
+// Fonction pour obtenir l'URL optimisée de Vercel
+function getOptimizedImageUrl(src, width, quality) {
+    // Si nous sommes en développement local, utiliser l'URL directe
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return src;
+    }
+    // En production, utiliser l'URL optimisée de Vercel
+    return `/_vercel/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`;
+}
+
 // Fonction pour précharger une image
-function preloadImage(src) {
+function preloadImage(imageConfig) {
     return new Promise((resolve, reject) => {
         const img = new Image();
-        img.src = src;
+        const optimizedUrl = getOptimizedImageUrl(imageConfig.src, imageConfig.width, imageConfig.quality);
+        img.src = optimizedUrl;
         img.onload = () => resolve(img);
-        img.onerror = () => reject(new Error(`Erreur de chargement de l'image: ${src}`));
+        img.onerror = () => reject(new Error(`Erreur de chargement de l'image: ${imageConfig.src}`));
     });
 }
 
@@ -39,8 +50,8 @@ async function loadAllImages() {
 
     try {
         // Charger toutes les images en parallèle
-        await Promise.all(imagesToLoad.map(async (src) => {
-            await preloadImage(src);
+        await Promise.all(imagesToLoad.map(async (imageConfig) => {
+            await preloadImage(imageConfig);
             loadedImages++;
             updateProgress(loadedImages, totalImages);
         }));
