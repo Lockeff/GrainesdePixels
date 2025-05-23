@@ -79,25 +79,13 @@ const imagesToLoad = [
     'Public/Projets/BtnPageStudioOverlay.png'
 ];
 
-// Fonction pour précharger une image avec timeout
+// Fonction pour précharger une image
 function preloadImage(src) {
     return new Promise((resolve, reject) => {
         const img = new Image();
-        const timeout = setTimeout(() => {
-            img.src = ''; // Annuler le chargement
-            resolve(null); // Résoudre avec null pour continuer le chargement
-        }, 5000); // Timeout de 5 secondes
-
-        img.onload = () => {
-            clearTimeout(timeout);
-            resolve(img);
-        };
-        img.onerror = () => {
-            clearTimeout(timeout);
-            console.warn(`Image non chargée: ${src}`);
-            resolve(null); // Résoudre avec null pour continuer le chargement
-        };
         img.src = src;
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error(`Erreur de chargement de l'image: ${src}`));
     });
 }
 
@@ -112,24 +100,14 @@ function updateProgress(loaded, total) {
 async function loadAllImages() {
     const totalImages = imagesToLoad.length;
     let loadedImages = 0;
-    let failedImages = 0;
 
     try {
         // Charger toutes les images en parallèle
-        const results = await Promise.all(imagesToLoad.map(async (src) => {
-            const result = await preloadImage(src);
+        await Promise.all(imagesToLoad.map(async (src) => {
+            await preloadImage(src);
             loadedImages++;
-            if (result === null) {
-                failedImages++;
-            }
             updateProgress(loadedImages, totalImages);
-            return result;
         }));
-
-        // Vérifier si trop d'images ont échoué
-        if (failedImages > totalImages * 0.3) { // Si plus de 30% des images ont échoué
-            console.warn(`${failedImages} images n'ont pas pu être chargées`);
-        }
 
         // Une fois tout chargé, masquer le loader
         const loader = document.getElementById('loader');
@@ -142,14 +120,7 @@ async function loadAllImages() {
 
     } catch (error) {
         console.error('Erreur lors du chargement des images:', error);
-        // En cas d'erreur, on force quand même la disparition du loader après 6 secondes
-        setTimeout(() => {
-            const loader = document.getElementById('loader');
-            if (loader) {
-                loader.classList.add('fade-out');
-                setTimeout(() => loader.remove(), 500);
-            }
-        }, 6000);
+        document.querySelector('.loader-text').textContent = 'Erreur de chargement...';
     }
 }
 
