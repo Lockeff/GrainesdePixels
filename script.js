@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // === 2) NAVIGATION ENTRE SECTIONS PAR LIENS ===
-  const links = document.querySelectorAll('nav ul li a');
   const sections = document.querySelectorAll('.content-section');
   const projectDetailsSection = document.getElementById('project-details');
   const headerHeight = document.querySelector('header').offsetHeight;
@@ -42,20 +41,42 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: sectionTop, behavior: 'smooth' });
   }
 
-  // Gestion des liens du menu
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      nav.classList.remove('nav-active');
-      burger.classList.remove('active');
-      // Enlever le flou quand on clique sur un lien
-      contentSections.forEach(section => {
+  // Fonction pour gérer la navigation
+  function handleNavigation(targetId) {
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      // Masquer toutes les sections
+      sections.forEach(section => {
+        section.classList.add('hidden');
         section.classList.remove('blur');
       });
-      sections.forEach(section => section.classList.add('hidden'));
-      const targetId = link.getAttribute('href').substring(1);
-      document.getElementById(targetId).classList.remove('hidden');
-    });
+
+      // Afficher la section cible
+      targetSection.classList.remove('hidden');
+
+      // Fermer le menu burger si ouvert
+      if (nav.classList.contains('nav-active')) {
+        nav.classList.remove('nav-active');
+        burger.classList.remove('active');
+        // Retirer le blur de toutes les sections lors de la fermeture du menu
+        contentSections.forEach(section => {
+          section.classList.remove('blur');
+        });
+      }
+
+      // Scroller vers la section
+      scrollToSectionWithOffset(targetSection);
+    }
+  }
+
+  // Gestion des liens de navigation
+  document.addEventListener('click', (e) => {
+    // Vérifier si le clic est sur un lien avec href="#..."
+    if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
+      e.preventDefault();
+      const targetId = e.target.getAttribute('href').substring(1);
+      handleNavigation(targetId);
+    }
   });
 
   // === 3) CARROUSEL ===
