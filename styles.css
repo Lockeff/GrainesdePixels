@@ -1467,13 +1467,19 @@ nav ul li a:hover {
     padding: 0.5rem;
   }
 
+  .project-image {
+  width: 50%;
+  height: 60%;
+  }
   .projects-grid {
     gap: 1rem;
   }
 
   .projects-image-container {
-    height: 10rem;
+    height: 26rem;
     overflow: hidden;
+            padding-left: 25%;
+        padding-top: 10%;
   }
 
   #mes-projets .section-title {
