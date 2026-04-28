@@ -14,7 +14,7 @@ body {
 /* Déclarer DIN Pro Bold */
 @font-face {
   font-family: 'DIN Pro';
-  src: url('./Public/DIN-Pro-Bold-Italic.ttf') format('truetype'); /* Correction du format */
+  src: url('./public/DIN-Pro-Bold-Italic.ttf') format('truetype'); /* Correction du format */
   font-weight: bold;
   font-style: normal;
 }
@@ -22,7 +22,7 @@ body {
 /* Déclarer DIN Pro Italic */
 @font-face {
   font-family: 'DIN Pro';
-  src: url('./Public/DinProItalic.otf') format('opentype'); /* Correction du format */
+  src: url('./public/DinProItalic.otf') format('opentype'); /* Correction du format */
   font-weight: normal;
   font-style: italic;
 }
@@ -30,7 +30,7 @@ body {
 /* Déclarer Poxel */
 @font-face {
   font-family: 'Poxel';
-  src: url('./Public/poxel-font.ttf') format('opentype'); /* Correction du format */
+  src: url('./public/poxel-font.ttf') format('opentype'); /* Correction du format */
   font-weight: normal;
   font-style: normal;
 }
@@ -265,7 +265,7 @@ nav ul li a:hover {
   justify-content: center;
 
   /* Fond : dégradé, modifiable si besoin pour y insérer une image */
-  background: url('./Public/MainBackgroundTop.png');
+  background: url('./public/MainBackgroundTop.png');
   background-size: cover;
   background-position: center;
   padding: 2rem;
@@ -379,7 +379,7 @@ nav ul li a:hover {
 }
 
 #qui-suis-je{
-  background-image: url('./Public/Background.png'); /* Chemin vers l'image */
+  background-image: url('./public/Background.png'); /* Chemin vers l'image */
   background-size: cover; /* L'image couvre toute la section */
   background-position: center; /* Centrer l'image */
   background-repeat: no-repeat; /* Éviter les répétitions */
@@ -1490,4 +1490,3 @@ nav ul li a:hover {
     font-size: 0.8rem;
   }
 }
-
