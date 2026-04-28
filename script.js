@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let activeIndex = 0;
     let autoplayInterval = null;
-    const autoplayDelay = 5000;
+    const autoplayDelay = 10000;
     let containerWidth = container.offsetWidth;
     
     // Données des projets
