@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const autoplayDelay = 5000;
     let containerWidth = container.offsetWidth;
     
-    const projectUrls = ['https://2etoiles.com', 'https://www.lecycledelavia.com/'];
+    const projectUrls = ['https://2etoiles.com', 'https://youtu.be/1ejK0GmF9tY'];
     const projectKeys = [
       { name: 'project-2etoiles-name', quote: 'project-2etoiles-quote' },
       { name: 'project-kelch-name',    quote: 'project-kelch-quote' }
