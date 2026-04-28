@@ -27,18 +27,13 @@
       <span class="bar"></span>
     </div>
 
-    <!-- Logo centré dans la barre header, visible uniquement en mobile -->
-    <a href="#Accueil" class="mobile-header-logo">
-      <img src="./Public/LogoMainBanner.png" alt="Graines de Pixels">
-    </a>
-
     <ul class="nav-links" id="nav-links">
       <li><a href="#Accueil">ACCUEIL</a></li>
       <li><a href="#qui-suis-je">QUI SOMES-NOUS ?</a></li>
       
       <!-- Logo au centre -->
       <li> <img src="./Public/LogoMainBanner.png" class="logoheader" alt="Logo Graines de Pixels"></li>
-      <li><a href="#mes-projets">NOS JEUX</a></li>
+      <li><a href="#mes-projets">NOS PROJETS</a></li>
       <li><a href="#contact">CONTACTS</a></li>
     </ul>
   </nav>
@@ -50,7 +45,7 @@
       <div class="Accueil">
         <div class="text-container">
           <img src="./Public/LogoMainBanner.png"/>
-            <h1>NOUS CREEONS DES EMOTIONS, PIXEL PAR PIXEL </h1>
+            <h1>LE STUDIO QUI FAIT GERMER VOS EMOTIONS ! </h1>
             <p>
             Découvrez nos 
             <strong>
@@ -178,36 +173,171 @@
       </div>
     </section>
 
-    <!-- SECTION MES PROJETS (Carrousel 3D comme LOKOSITEWEB) -->
+    <!-- SECTION MES PROJETS (avec séparation claire) -->
     <section id="mes-projets" class="content-section hidden">
-      <h2 class="section-title" style="text-align: center; margin-bottom: 4%; color: var(--color-white);">PRODUCTIONS DU STUDIO</h2>
-      <div class="projects-container">
-        <div class="projects-grid">
-          <!-- Images des projets -->
-          <div class="projects-image-container" id="projectsImageContainer">
-            <img src="./Public/Carroussel/SlideDeuxEtoilesSontNeesHover.png" alt="2 étoiles sont nées" class="project-image" data-index="0" data-title="2 étoiles sont nées">
-            <img src="./Public/Carroussel/SlideKelchHover.png" alt="Kelc'h AR Viya" class="project-image" data-index="1" data-title="Kelc'h AR Viya">
-          </div>
-          <!-- Contenu des projets -->
-          <div class="projects-content">
-            <div class="projects-text" id="projectsText">
-              <h3 class="projects-name" id="projectsName">Nom</h3>
-              <p class="projects-quote" id="projectsQuote">Description</p>
-            </div>
-            <div class="projects-arrow-buttons">
-              <button class="projects-arrow-button prev-button" id="projectsPrev" aria-label="Previous project">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M15 18l-6-6 6-6"/>
-                </svg>
-              </button>
-              <button class="projects-arrow-button next-button" id="projectsNext" aria-label="Next project">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 18l6-6-6-6"/>
-                </svg>
-              </button>
-            </div>
-          </div>
+      <H1>PRODUCTIONS DU STUDIO</H1>
+      <div class="carousel">
+        <!-- Flèche gauche -->
+      <button class="arrow left-arrow">&lt;</button>  
+        <!-- Conteneur des slides -->
+        <div class="carousel-track-container">
+          <ul class="carousel-track">
+            <li class="carousel-slide">
+              <div class="project" 
+                data-title="2 étoiles sont nées" 
+                data-description="2 étoiles sont nées est une production Graines de Pixels réalisée par Graines de Pixels.           
+                  Deux étoiles sont nées est un jeu d'aventure/plateforme coopératif en 3D. Le joueur contrôlera deux personnages (ou deux joueurs contrôleront un personnage chacun) qui devront évoluer dans un univers étrange et brumeux ou la gravité dépend des sentiments.
+                  Chaque personnage aura des pouvoirs propres (voler, téléportation, …) qui leur permettront d'avancer dans les niveaux.
+                  L'objectif sera de parcourir tous les niveaux pour à chaque fois trouver la sortie et au final, vaincre l'inconnu et sauver les parents des personnages.
+                  <span class='note-assets'>Note sur les assets : Les assets visuels présentés ont été achetés pour les besoins du projet. Ils sont l'œuvre de l'artiste AleksandrIvanov. Pour en savoir plus sur son travail, vous pouvez consulter ses pages : <a href='https://www.fab.com/fr/sellers/AleksandrIvanov' target='_blank'>Fab</a> et <a href='https://www.facebook.com/profile.php?id=100022796209651' target='_blank'>Facebook</a></span>" 
+                data-buttons='[
+                  {"text": "Lien officiel", "url": "https://www.lecycledelavia.com/"}
+                ]'
+                data-missions="Rédaction du Game Design Document, Développement Unreal Engine 5, Redaction du Level Design Document, Réalisation du Sound Design avec IA, Plateforme cible: PC Windows/Android et iOS/Switch, Statut: Démaré: Phase de Game Concept"
+                data-banner="./Public/Projets/DeuxEtoiles/DeuxEtoilesBanner.png"
+                data-images='[
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix1.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix1DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix1GlowMinia.png"
+                },
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix2.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix2DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix2GlowMinia.png"
+                },
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix3.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix3DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix3GlowMinia.png"
+                },
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix4.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix4DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix4GlowMinia.png"
+                },
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix5.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix5DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix5GlowMinia.png"
+                },
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix6.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix6DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix6GlowMinia.png"
+                },
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix7.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix7DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix7GlowMinia.png"
+                },
+                {
+                  "big": "./Public/Projets/DeuxEtoiles/BigSizes/DeuxPix8.png",
+                  "dark": "./Public/Projets/DeuxEtoiles/Minias/Dark/DeuxPix8DarkMinia.png",
+                  "glow": "./Public/Projets/DeuxEtoiles/Minias/Glow/DeuxPix8GlowMinia.png"
+                }
+              ]' >
+                  <a href="https://2etoiles.com" target="_blank">
+                    <img src="./Public/Carroussel/SlideDeuxEtoilesSontNeesHover.png" alt="2 étoiles sont nées">
+                  </a>
+              </div>
+            </li>
+            <li class="carousel-slide">
+              <div class="project" 
+                data-title="Le petit secouriste" 
+                data-description="Le petit secouriste est une production Graines de Pixels réalisée par Graines de Pixels.  
+                <span class='note-assets'>Note sur les assets : Les assets visuels présentés ont été achetés pour les besoins du projet. Ils sont l'œuvre de l'artiste AleksandrIvanov. Pour en savoir plus sur son travail, vous pouvez consulter ses pages : <a href='https://www.fab.com/fr/sellers/PolyArt3D/about' target='_blank'>Fab</a> et <a href='https://www.polyart3d.com/' target='_blank'>Site Internet</a></span>" 
+                Un jeux d'aventure pour apprendre à se repérer et à évoluer dans notre environnement et société en sécurité." 
+                data-buttons='[
+                  {"text": "Lien officiel", "url": "https://www.lecycledelavia.com/"}
+                ]'
+                data-missions="Rédaction du Game Design Document, Développement Unreal Engine 5, Redaction du Level Design Document, Réalisation du Sound Design avec IA, Plateforme cible: PC Windows/Android et iOS/Switch, Statut: Game Design Document en cours de rédaction"
+                data-banner="./Public/Projets/Petit/PetitSecouristeBanner.png"
+                data-images='[
+                {
+                  "big": "./Public/Projets/Petit/PetitSecouriste1.png",
+                  "glow": "./Public/Projets/Petit/PetitSecouriste1Minia.png"
+                }
+                ]' >
+                  <img src="./Public/Carroussel/SlideLePetitSecouristeHover.png" alt="Le petit secouriste">
+              </div>
+            </li>
+            <li class="carousel-slide">
+              <div class="project" 
+                data-title="Kelc'h AR Viya" 
+                data-description="Kelc'h AR Viya est une production Graines de Pixels réalisée par Graines de Pixels.             
+                  Un Action/RPG d'exploration narratif mettant en scène des combats épiques et exploration spatiale.                  
+                  Cela fait maintenant 50 ans qu'ils sont arrivés sur Terre, bouleversant nos croyances et notre science. La Viya, jusqu'ici inconnue, régit notre existence maintenant. Et c'est grâce aux eraiés, dont le monde leur a été volé, que nous sommes capables de manipuler l'espace et pour certain, le temps. Mais ce qui a possédé leur foyer lorgne sur le nôtre et sur bien d'autres. C'est pourquoi je me suis enrôlé dans la Coalition pour explorer l'univers et fédérer l'Ervillia contre les Tosieas: nos créateurs et exterminateurs.​
+                  Mais en moi, quelque chose cloche. Quelque chose que je ne saurais décrire. Est-ce la Viya qui m'appelle à elle? Est-ce que son écoulement touche à sa fin pour moi? Ou bien est-ce autre chose qui me désire et cherche à m'attirer à lui ou elle...​                  
+                  Nous sommes en 2150 et le joueur incarne un personnage qu'il créé et personnalise, Terrien(ne), s'enrôlé dans une coalition terrienne/éraiée. Le but de cette organisation est d'explorer l'espace pour trouver des alliés face aux Tosieas et aider les eraiés à reprendre leur planète perdue.​                  
+                  Mais parfois, ces civilisations sont déjà sous l'emprise des Tosieas, ou bien lorgne elles aussi sur nos mondes." 
+                data-buttons='[
+                  {"text": "Lien officiel", "url": "https://www.lecycledelavia.com/"}
+                ]'
+                data-missions="Rédaction du Game Design Document, Développement Unreal Engine 5, Redaction du Level Design Document, Réalisation du Sound Design avec IA, Statut: En pause: Protoype développé."
+                data-banner="./Public/Projets/Kelch/BannerKelch.png"
+                data-images='[
+                  {
+                    "big": "./Public/Projets/Kelch/BigSizes/KelchPix1.png",
+                    "dark": "./Public/Projets/Kelch/Minias/Dark/KelchPix1DarkMinia.png",
+                    "glow": "./Public/Projets/Kelch/Minias/Glow/KelchPix1GlowMinia.png"
+                  },
+                  {
+                    "big": "./Public/Projets/Kelch/BigSizes/KelchPix2.png",
+                    "dark": "./Public/Projets/Kelch/Minias/Dark/KelchPix2DarkMinia.png",
+                    "glow": "./Public/Projets/Kelch/Minias/Glow/KelchPix2GlowMinia.png"
+                  },
+                  {
+                    "big": "./Public/Projets/Kelch/BigSizes/KelchPix3.png",
+                    "dark": "./Public/Projets/Kelch/Minias/Dark/KelchPix3DarkMinia.png",
+                    "glow": "./Public/Projets/Kelch/Minias/Glow/KelchPix3GlowMinia.png"
+                  },
+                  {
+                    "big": "./Public/Projets/Kelch/BigSizes/KelchPix4.png",
+                    "dark": "./Public/Projets/Kelch/Minias/Dark/KelchPix4DarkMinia.png",
+                    "glow": "./Public/Projets/Kelch/Minias/Glow/KelchPix4GlowMinia.png"
+                  }
+                ]' >
+                <img src="./Public/Carroussel/SlideKelchHover.png" alt="Kelc'h Ar Viya">
+              </div>
+            </li>
+          </ul>
         </div>
+             <!-- Flèche droite -->
+      <button class="arrow right-arrow">&gt;</button>
+      </div>
+        <H1><br>PRODUCTIONS TIERCES</H1>
+      <div class="carousel tierce">
+        <button class="arrow left-arrowTIER hidden"></button>  
+        <!-- Conteneur des slides -->
+        <div class="carousel-track-container">
+          <ul class="carousel-trackTIER">
+            <li class="carousel-slide">
+              <div class="project" 
+                data-title="DROP" 
+                data-description="DROP est une production AGOG développée par Graines de Pixels.
+                Drop est un nouveau jeu mobile où les joueurs entreprennent un voyage pour guérir la planète, un écosystème à la fois.
+                De la plantation d'arbres au nettoyage des océans, chaque action que vous réalisez dans le jeu a un impact concret dans le monde réel.
+                En partenariat avec des ONG environnementales, nous nous engageons à planter un arbre ou à retirer du plastique de nos océans." 
+                data-buttons='[
+                  {"text": "Lien officiel", "url": "https://www.lecycledelavia.com/"}
+                ]'
+                data-missions="Développement Unreal Engine 5, Statut: Protoype en cours de développement sur Android et iOS"
+                data-banner="./Public/Projets/DROP/BannerDROP.png"
+                data-images='[
+                  {
+                    "big": "./Public/Projets/DROP/BigSizes/DROPPix1.png",
+                    "dark": "./Public/Projets/DROP/Minias/Dark/DROPPix1DarkMinia.png",
+                    "glow": "./Public/Projets/DROP/Minias/Glow/DROPPix1GlowMinia.png"
+                  }
+                ]' >
+                  <img src="./Public/Carroussel/SlideDROPHover.png" alt="Kelc'h Ar Viya">
+              </div>
+            </li>
+          </ul>
+        </div>
+      <!-- Flèche droite -->
+      <button class="arrow right-arrowTIER hidden"></button>
       </div>
     </section>
 
