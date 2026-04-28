@@ -1,18 +1,18 @@
 // Liste des images à précharger
 const imagesToLoad = [
-    'public/2EtoilesMain.png',
-    'public/MainBackgroundTop.png',
-    'public/Background.png',
-    'public/BtnContact.png',
-    'public/Btn_Envoyer.png',
-    'public/Arrow.png',
-    'public/Kelc2.png',
-    'public/Kelc3.png',
-    'public/KelcMain.png',
-    'public/Kelc1.png',
-    'public/GdP-Logo.png',
-    'public/GdP-Logo sans fond.png',
-    'public/iconAbout.png'
+    'Public/2EtoilesMain.png',
+    'Public/MainBackgroundTop.png',
+    'Public/Background.png',
+    'Public/BtnContact.png',
+    'Public/Btn_Envoyer.png',
+    'Public/Arrow.png',
+    'Public/Kelc2.png',
+    'Public/Kelc3.png',
+    'Public/KelcMain.png',
+    'Public/Kelc1.png',
+    'Public/GdP-Logo.png',
+    'Public/GdP-Logo sans fond.png',
+    'Public/iconAbout.png'
 ];
 
 // Fonction pour précharger une image
@@ -32,40 +32,31 @@ function updateProgress(loaded, total) {
     document.querySelector('.loader-text').textContent = `Chargement... ${Math.round(progress)}%`;
 }
 
-// Fonction pour cacher le loader
-function hideLoader() {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        loader.classList.add('fade-out');
-        setTimeout(() => loader.remove(), 500);
-    }
-}
-
 // Fonction principale de chargement
 async function loadAllImages() {
     const totalImages = imagesToLoad.length;
     let loadedImages = 0;
 
-    // Sécurité : masquer le loader quoi qu'il arrive après 5 secondes
-    const securityTimeout = setTimeout(hideLoader, 5000);
-
     try {
         // Charger toutes les images en parallèle
-        await Promise.all(imagesToLoad.map(src => 
-            preloadImage(src)
-                .then(() => {
-                    loadedImages++;
-                    updateProgress(loadedImages, totalImages);
-                })
-                .catch(err => console.warn(err.message)) // On ignore les erreurs d'images pour ne pas bloquer
-        ));
+        await Promise.all(imagesToLoad.map(async (src) => {
+            await preloadImage(src);
+            loadedImages++;
+            updateProgress(loadedImages, totalImages);
+        }));
 
-        clearTimeout(securityTimeout);
-        hideLoader();
+        // Une fois tout chargé, masquer le loader
+        const loader = document.getElementById('loader');
+        loader.classList.add('fade-out');
+        
+        // Supprimer complètement le loader après l'animation
+        setTimeout(() => {
+            loader.remove();
+        }, 500);
 
     } catch (error) {
         console.error('Erreur lors du chargement des images:', error);
-        hideLoader();
+        document.querySelector('.loader-text').textContent = 'Erreur de chargement...';
     }
 }
 
