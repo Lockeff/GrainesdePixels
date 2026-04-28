@@ -182,6 +182,31 @@ nav ul li a:hover {
     width: 15%;
   }
 
+  /* Barre de navigation : hauteur fixe pour avoir un vrai header visible */
+  nav {
+    height: 62px;
+  }
+
+  /* Logo centré dans la barre mobile */
+  .mobile-header-logo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+  }
+
+  .mobile-header-logo img {
+    height: 38px;
+    width: auto;
+  }
+
+  /* Cache le logo à l'intérieur du menu déroulant */
+  .nav-links li:nth-child(3) {
+    display: none;
+  }
+
   .carousel-slide {
     min-width: 100%; /* Chaque slide prend toute la largeur */
   }
@@ -240,7 +265,9 @@ nav ul li a:hover {
   justify-content: center;
 
   /* Fond : dégradé, modifiable si besoin pour y insérer une image */
-  background:url('./Public/MainBackgroundTop.png');
+  background: url('./Public/MainBackgroundTop.png');
+  background-size: cover;
+  background-position: center;
   padding: 2rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
@@ -407,6 +434,10 @@ nav ul li a:hover {
    width: 10%; height: 10%; padding-right: 5%;
 }
 
+.mobile-header-logo {
+  display: none;
+}
+
 
 .TexteCentre{
   text-align: center;
@@ -450,9 +481,11 @@ nav ul li a:hover {
 }
 
 .bullet {
-  width: 2%; /* Définit la largeur de l'image */
-  height: 2%; /* Définit la hauteur de l'image */
-  margin-right: 10px; /* Ajoute un espace entre l'image et le texte */
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .text-container li {
@@ -910,134 +943,231 @@ nav ul li a:hover {
 /* Mobiles (max-width: 768px) */
 @media (max-width: 768px) {
 
+  /* Section contenu : marge pour ne pas passer derrière le header fixe */
+  .content-section {
+    margin-top: 66px;
+  }
+
+  /* Section profil : pleine largeur avec marges auto */
   .profil {
     flex-direction: column;
-    width: 60%;
+    width: 92%;
+    margin-left: auto;
+    margin-right: auto;
   }
+
   .image-container {
     display: block;
     flex: 1;
     text-align: center;
   }
 
+  /* Flèches décoratives : réduites sur mobile */
+  .flechebas {
+    width: 8%;
+    height: 8%;
+    padding-right: 3%;
+    padding-left: 0;
+    padding-top: 8%;
+    flex-shrink: 0;
+  }
+
+  .flechedroite {
+    width: 8%;
+    height: 8%;
+    padding-right: 3%;
+    padding-left: 0;
+    padding-top: 5%;
+    flex-shrink: 0;
+  }
+
+  /* Section hero */
   .Accueil .text-container {
-    margin-top: 10%;
+    margin-top: 8%;
+    max-width: 95%;
   }
 
   .Accueil .text-container img {
-    width: 25%;
-    max-width: 150px;
+    width: 45%;
+    max-width: 180px;
   }
 
   .Accueil .text-container p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
-  .Accueil h1{
-    font-size: 1.6rem;
+  .Accueil h1 {
+    font-size: 1.5rem;
   }
 
+  /* News section */
+  .news-section {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .news-item {
+    border-radius: 20px;
+    padding: 0.75rem;
+  }
+
+  .news-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .news-details h3 {
+    font-size: 1rem;
+  }
+
+  /* Formulaire contact */
+  .contact {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 1rem;
+  }
+
+  /* Projets */
   .project {
     max-width: 90%;
   }
 
-  .contact {
-    gap: 1rem;
+  /* Détail de projet */
+  .project-detail-content {
+    padding: 1rem;
   }
 
-  .carousel-slide {
-    min-width: 100%; /* Chaque slide prend toute la largeur */
+  .project-detail-content p, ul {
+    font-size: 0.9rem;
   }
 
-  .carousel-slide img {
-    width: 80%; /* Réduit la taille de l'image */
-    margin: 0 auto; /* Centre l'image */
+  .big-image img {
+    width: 90%;
   }
 
-  .carousel-slide:hover {
-    transform: scale(1.1); /* Réduit l'effet de zoom au survol */
+  .thumbnail {
+    width: 22%;
   }
 
-  .flechebas{
-    padding-right: 0%;
-    padding-left: 10%;
-  }
-  
-  .flechedroite{
-    padding-right: 10%;
-    padding-left: 0%;
-    padding-top: 5%;
-  }
-  .content-section{
-    margin-top: 0;
+  /* Burger : aligné correctement */
+  .burger {
+    margin-bottom: 0;
   }
 
-  nav ul li{
+  /* Navigation items */
+  nav ul li {
     width: 100%;
     margin: 5%;
     top: 100%;
   }
 
+  /* Anciens carrousels */
+  .carousel-slide {
+    min-width: 100%;
+  }
 
+  .carousel-slide img {
+    width: 80%;
+    margin: 0 auto;
+  }
 
-  .project-detail-content p, ul {
-    font-size: 0.8rem;
-}
-
-.burger {
-  margin-bottom: -10%;
-}
+  .carousel-slide:hover {
+    transform: scale(1.1);
+  }
 
   .carousel.tierce {
-    width: 60%; /* Augmentation de la taille sur mobile */
+    width: 60%;
   }
 }
 
 /* Petits Mobiles (max-width: 480px) */
 @media (max-width: 480px) {
+
+  /* Marge pour ne pas passer derrière le header */
+  .content-section {
+    margin-top: 66px;
+  }
+
   nav ul li a {
     font-size: 0.9rem;
   }
 
-  .profil {
-    flex-direction: column;
-    width: 60%;
+  nav ul li {
+    width: 100%;
+    margin: 5%;
   }
 
-  .Accueil h1{
-    font-size: 1.4rem;
-  }
-
-  .profil h1 {
-    font-size: 1.5rem;
-  }
-
-  .profil p {
-    font-size: 0.8rem;
-  }
-
-  .image-container {
-    display: block;
-    flex: 1;
-    text-align: center;
-  }
-
-  .Accueil .text-container {
-    margin-top: 10%;
+  /* Section hero */
+  .Accueil h1 {
+    font-size: 1.3rem;
   }
 
   .Accueil .text-container img {
-    width: 20%;
-    max-width: 100px;
-  }
-  .Accueil .text-container p{
-    font-size: 0.8rem;
+    width: 38%;
+    max-width: 150px;
   }
 
-  .project h2 {
-    font-size: 1rem;
+  .Accueil .text-container p {
+    font-size: 0.85rem;
   }
 
+  /* Section profil */
+  .profil {
+    flex-direction: column;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .profil h1 {
+    font-size: 1.4rem;
+  }
+
+  .profil p {
+    font-size: 0.9rem;
+  }
+
+  /* Cacher les flèches décoratives sur très petits écrans pour gagner de l'espace */
+  .flechebas,
+  .flechedroite {
+    display: none;
+  }
+
+  .profilfleche {
+    display: block;
+  }
+
+  /* News section : empilement vertical sur petits écrans */
+  .news-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 16px;
+    padding: 1rem;
+  }
+
+  .news-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-details h3 {
+    font-size: 0.95rem;
+  }
+
+  .news-details p {
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  /* Formulaire contact */
   #contact label {
     font-size: 0.9rem;
   }
@@ -1051,52 +1181,46 @@ nav ul li a:hover {
     font-size: 0.9rem;
   }
 
+  /* Projet */
+  .project h2 {
+    font-size: 1rem;
+  }
+
+  .project-detail-content p, ul {
+    font-size: 0.85rem;
+  }
+
+  .thumbnail {
+    width: 28%;
+  }
+
+  /* Burger */
+  .burger {
+    margin-bottom: 0;
+  }
+
+  /* Anciens carrousels */
   .carousel-slide {
     min-width: 100%;
   }
 
   .carousel-slide img {
-    width: 70%; /* Encore plus petit sur très petit écran */
+    width: 70%;
     margin: 0 auto;
   }
 
   .carousel-slide:hover {
-    transform: scale(1.05); /* Effet de zoom encore plus réduit */
+    transform: scale(1.05);
   }
-
-  .flechebas{
-    padding-right: 0%;
-    padding-left: 10%;
-    padding-top: 15%;
-  }
-  
-  .flechedroite{
-    padding-right: 10%;
-    padding-left: 0%;
-    padding-top: 15%;
-  }
-
-  .content-section{
-    margin-top: 5%;
-  }
-
-  nav ul li{
-    width: 100%;
-    margin: 5%;
-    top: 100%;
-  }
-
-
-
-  .project-detail-content p, ul {
-    font-size: 0.8rem;
-}
-.burger {
-  margin-bottom: -10%;
-}
 
   .carousel.tierce {
-    width: 80%; /* Encore plus large sur très petit écran */
+    width: 80%;
+  }
+
+  /* Carrousel projets */
+  #mes-projets .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 2%;
   }
 }
 
@@ -1163,3 +1287,207 @@ nav ul li a:hover {
   font-weight: bold;
   color: #8b5cf6; /* Violet */
 }
+
+/* ===============================
+   Projects Carousel 3D (LOKOSITEWEB Style)
+   =============================== */
+#mes-projets {
+  background-color: #0b0b0b;
+  width: 100%;
+  padding: 5% 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mes-projets .section-title {
+  color: #b8b8b8;
+  margin-bottom: 4%;
+  width: 100%;
+}
+
+.projects-container {
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  gap: 5rem;
+}
+
+.projects-image-container {
+  position: relative;
+  width: 100%;
+  height: 24rem;
+  perspective: 1000px;
+}
+
+.project-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: 3px solid #e09eff;
+}
+
+.projects-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.projects-text {
+  min-height: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.projects-name {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #e09eff;
+  font-size: 1.5rem;
+  font-family: 'Poxel', sans-serif;
+  flex-shrink: 0;
+}
+
+.projects-quote {
+  line-height: 1.6;
+  color: #b8b8b8;
+  font-size: 0.95rem;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.projects-quote .word {
+  display: inline-block;
+  transition: filter 0.22s ease, opacity 0.22s ease, transform 0.22s ease;
+}
+
+.projects-arrow-buttons {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 3rem;
+}
+
+.projects-arrow-button {
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  background-color: #ffffff;
+  color: #0b0b0b;
+}
+
+.projects-arrow-button:hover {
+  background-color: #e09eff;
+  color: #ffffff;
+}
+
+.projects-arrow-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Responsive Design pour le carrousel 3D */
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .projects-arrow-buttons {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 0.5rem;
+  }
+
+  .projects-grid {
+    gap: 1rem;
+  }
+
+  .projects-image-container {
+    height: 13rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Flèches cachées sur mobile : swipe uniquement */
+  .projects-arrow-buttons {
+    display: none !important;
+  }
+
+  .projects-text {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    padding: 0 0.5rem;
+  }
+
+  .projects-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .projects-quote {
+    overflow-y: visible;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* Indicateur de swipe */
+  .projects-swipe-hint {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-container {
+    padding: 0.5rem;
+  }
+
+  .projects-grid {
+    gap: 1rem;
+  }
+
+  .projects-image-container {
+    height: 10rem;
+    overflow: hidden;
+  }
+
+  #mes-projets .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 2%;
+  }
+
+  .projects-name {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .projects-quote {
+    font-size: 0.8rem;
+  }
+}
+
