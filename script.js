@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === 2) NAVIGATION ENTRE SECTIONS PAR LIENS ===
   const sections = document.querySelectorAll('.content-section');
-  const projectDetailsSection = document.getElementById('project-details');
   const headerHeight = document.querySelector('header').offsetHeight;
 
   // Fonction pour gérer les \n dans les descriptions
@@ -66,6 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Scroller vers la section
       scrollToSectionWithOffset(targetSection);
+
+      // Initialiser le carrousel 3D si c'est la section mes-projets
+      if (targetId === 'mes-projets') {
+        setTimeout(() => initProjectsCarousel(), 100);
+      }
     }
   }
 
@@ -79,182 +83,195 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === 3) CARROUSEL ===
-  const track = document.querySelector('.carousel-track');
-  const trackTIER = document.querySelector('.carousel-trackTIER');
-  
-  if (track) {
-    const slides = Array.from(track.children);
-    const leftArrow = document.querySelector('.left-arrow');
-    const rightArrow = document.querySelector('.right-arrow');
-    let currentIndex = 0;
-
-    if (leftArrow && rightArrow) {
-      // Fonction pour changer de slide
-      const updateSlide = (index) => {
-        track.style.transform = `translateX(-${index * 100}%)`;
+  // === 3) CARROUSEL 3D PROJETS (Style LOKOSITEWEB) ===
+  function initProjectsCarousel() {
+    const container = document.getElementById('projectsImageContainer');
+    const images = document.querySelectorAll('.project-image');
+    const prevBtn = document.getElementById('projectsPrev');
+    const nextBtn = document.getElementById('projectsNext');
+    const nameEl = document.getElementById('projectsName');
+    const quoteEl = document.getElementById('projectsQuote');
+    
+    if (!container || images.length === 0) return;
+    
+    let activeIndex = 0;
+    let autoplayInterval = null;
+    const autoplayDelay = 10000;
+    let containerWidth = container.offsetWidth;
+    
+    // Données des projets
+    const projects = [
+      { 
+        name: '2 étoiles sont nées',
+        url: 'https://2etoiles.com',
+        quote: 'Deux étoiles sont nées est un jeu d\'aventure/plateforme coopératif en 3D. Le joueur contrôlera deux personnages (ou deux joueurs contrôleront un personnage chacun) qui devront évoluer dans un univers étrange et brumeux où la gravité dépend des sentiments. Chaque personnage aura des pouvoirs propres (voler, téléportation, …) qui leur permettront d\'avancer dans les niveaux.' 
+      },
+      { 
+        name: 'Kelc\'h AR Viya',
+        url: 'https://www.lecycledelavia.com/',
+        quote: 'Un Action/RPG d\'exploration narratif mettant en scène des combats épiques et exploration spatiale. Nous sommes en 2150 et le joueur incarne un personnage qu\'il crée et personnalise, Terrien(ne), s\'enrôlé dans une coalition terrienne/éraiée. Le but de cette organisation est d\'explorer l\'espace pour trouver des alliés face aux Tosieas.' 
+      }
+    ];
+    
+    function calculateGap(width) {
+      const minWidth = 1024;
+      const maxWidth = 1456;
+      const minGap = 60;
+      const maxGap = 86;
+      if (width <= minWidth) return minGap;
+      if (width >= maxWidth) return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));
+      return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
+    }
+    
+    function getImageStyle(index) {
+      const gap = calculateGap(containerWidth);
+      const maxStickUp = gap * 0.8;
+      const projectsLength = images.length;
+      const offset = (index - activeIndex + projectsLength) % projectsLength;
+      const isActive = index === activeIndex;
+      const isLeft = (activeIndex - 1 + projectsLength) % projectsLength === index;
+      const isRight = (activeIndex + 1) % projectsLength === index;
+      
+      if (isActive) {
+        return {
+          zIndex: 3,
+          opacity: 1,
+          pointerEvents: 'auto',
+          transform: 'translateX(0px) translateY(0px) scale(1) rotateY(0deg)',
+          transition: 'all 0.8s cubic-bezier(.4,2,.3,1)'
+        };
+      }
+      if (isLeft) {
+        return {
+          zIndex: 2,
+          opacity: 1,
+          pointerEvents: 'auto',
+          transform: `translateX(-${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(15deg)`,
+          transition: 'all 0.8s cubic-bezier(.4,2,.3,1)'
+        };
+      }
+      if (isRight) {
+        return {
+          zIndex: 2,
+          opacity: 1,
+          pointerEvents: 'auto',
+          transform: `translateX(${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(-15deg)`,
+          transition: 'all 0.8s cubic-bezier(.4,2,.3,1)'
+        };
+      }
+      return {
+        zIndex: 1,
+        opacity: 0,
+        pointerEvents: 'none',
+        transition: 'all 0.8s cubic-bezier(.4,2,.3,1)'
       };
-
-      // Navigation à gauche
-      leftArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-        updateSlide(currentIndex);
-      });
-
-      // Navigation à droite
-      rightArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-        updateSlide(currentIndex);
+    }
+    
+    function updateImages() {
+      images.forEach((img, index) => {
+        const style = getImageStyle(index);
+        Object.assign(img.style, style);
       });
     }
-  }
-
-  if (trackTIER) {
-    const slidesTIER = Array.from(trackTIER.children);
-    const leftArrowTIER = document.querySelector('.left-arrowTIER');
-    const rightArrowTIER = document.querySelector('.right-arrowTIER');
-    let currentIndexTIER = 0;
-
-    if (leftArrowTIER && rightArrowTIER) {
-      // Fonction pour changer de slide
-      const updateSlideTIER = (index) => {
-        trackTIER.style.transform = `translateX(-${index * 100}%)`;
-      };
-
-      // Navigation à gauche
-      leftArrowTIER.addEventListener('click', () => {
-        currentIndexTIER = (currentIndexTIER > 0) ? currentIndexTIER - 1 : slidesTIER.length - 1;
-        updateSlideTIER(currentIndexTIER);
-      });
-
-      // Navigation à droite
-      rightArrowTIER.addEventListener('click', () => {
-        currentIndexTIER = (currentIndexTIER < slidesTIER.length - 1) ? currentIndexTIER + 1 : 0;
-        updateSlideTIER(currentIndexTIER);
-      });
-    }
-  }
-
-  // Gérer le survol des images
-  const carouselImages = document.querySelectorAll('.carousel-slide img');
-  carouselImages.forEach((img) => {
-    const originalSrc = img.src;
-    const hoverSrc = img.dataset.hover;
-    if (hoverSrc) {
-      img.addEventListener('mouseenter', () => {
-        img.src = hoverSrc;
-      });
-      img.addEventListener('mouseleave', () => {
-        img.src = originalSrc;
-      });
-    }
-  });
-
-  // === 4) GESTION DE L'AFFICHAGE DES PROJETS (SECTION #project-details) ===
-  const projects = document.querySelectorAll('.project');
-  projects.forEach(project => {
-    project.addEventListener('click', () => {
-      // Récupérer les attributs data-*
-      const title = project.getAttribute('data-title') || '';
-      const rawDescription = project.getAttribute('data-description') || '';
-      const description = processLineBreaks(rawDescription);  // Gérer les \n
-      const missionsStr = project.getAttribute('data-missions') || '';
-      const bannerSrc = project.getAttribute('data-banner') || '';
-
-      // Boutons
-      let buttons = [];
-      const buttonsData = project.getAttribute('data-buttons');
-      if (buttonsData) {
-        try {
-          buttons = JSON.parse(buttonsData); // ex: [ {text: "Lien officiel", url: "https://..." } ]
-        } catch (e) {
-          console.warn('Erreur parse JSON data-buttons:', e);
-        }
-      }
-
-      // Images du diaporama (Dark/Glow/Big) => JSON
-      let diapoImages = [];
-      const imagesData = project.getAttribute('data-images') || '[]';
-      try {
-        diapoImages = JSON.parse(imagesData);
-      } catch (e) {
-        console.warn('Erreur parse JSON data-images:', e);
-      }
-
-      // === Injecter dans la section #project-details ===
-
-      // 1) Bannière
-      const projectBanner = document.getElementById('project-banner');
-      projectBanner.src = bannerSrc;
-
-      // 2) Titre
-      document.getElementById('project-title').textContent = title;
-
-      // 3) Description
-      document.getElementById('project-description').innerHTML = description;
-
-      // 4) Missions (séparées par des virgules)
-      const missionList = document.getElementById('project-missions');
-      missionList.innerHTML = '';
-      if (missionsStr.trim() !== '') {
-        const missions = missionsStr.split(',');
-        missions.forEach(m => {
-          const li = document.createElement('li');
-          li.textContent = m.trim();
-          missionList.appendChild(li);
+    
+    function animateQuote(text) {
+      const words = text.split(' ');
+      let html = words.map((word, i) => 
+        `<span class="word" style="filter: blur(10px); opacity: 0; transform: translateY(5px); transition: filter 0.22s ease ${0.025 * i}s, opacity 0.22s ease ${0.025 * i}s, transform 0.22s ease ${0.025 * i}s;">${word}</span>`
+      ).join(' ');
+      
+      quoteEl.innerHTML = html;
+      
+      setTimeout(() => {
+        quoteEl.querySelectorAll('.word').forEach(word => {
+          word.style.filter = 'blur(0px)';
+          word.style.opacity = '1';
+          word.style.transform = 'translateY(0px)';
         });
-      }
-
-      // 5) Liens (boutons)
-      const linksContainer = document.getElementById('project-links');
-      linksContainer.innerHTML = '';
-      buttons.forEach(btn => {
-        const linkButton = document.createElement('a');
-        linkButton.href = btn.url;
-        linkButton.textContent = btn.text;
-        linkButton.target = '_blank';
-        linkButton.classList.add('project-button');
-        linksContainer.appendChild(linkButton);
-      });
-
-      // 6) Diaporama : grande image (#current-image) + miniatures (#thumbnails-container)
-      const currentImage = document.getElementById('current-image');
-      const thumbnailsContainer = document.getElementById('thumbnails-container');
-      thumbnailsContainer.innerHTML = '';
-
-      // Afficher la première image par défaut
-      if (diapoImages.length > 0) {
-        currentImage.src = diapoImages[0].big;
-        
-        // Créer les miniatures
-        diapoImages.forEach((img, index) => {
-          const thumbnail = document.createElement('img');
-          thumbnail.src = img.glow;
-          thumbnail.alt = `Miniature ${index + 1}`;
-          thumbnail.classList.add('thumbnail');
-          if (index === 0) thumbnail.classList.add('active');
-          
-          thumbnail.addEventListener('click', () => {
-            // Mettre à jour l'image principale
-            currentImage.src = img.big;
-            
-            // Mettre à jour l'état actif des miniatures
-            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
-            thumbnail.classList.add('active');
-          });
-          
-          thumbnailsContainer.appendChild(thumbnail);
-        });
-      }
-
-      // === Afficher la section détail, masquer les autres sections ===
-      sections.forEach(s => s.classList.add('hidden'));
-      projectDetailsSection.classList.remove('hidden');
-      scrollToSectionWithOffset(projectDetailsSection);
+      }, 50);
+    }
+    
+    function updateContent() {
+      const project = projects[activeIndex];
+      nameEl.textContent = project.name;
+      animateQuote(project.quote);
+      updateImages();
+    }
+    
+    function handleNext() {
+      activeIndex = (activeIndex + 1) % images.length;
+      if (autoplayInterval) clearInterval(autoplayInterval);
+      updateContent();
+      startAutoplay();
+    }
+    
+    function handlePrev() {
+      activeIndex = (activeIndex - 1 + images.length) % images.length;
+      if (autoplayInterval) clearInterval(autoplayInterval);
+      updateContent();
+      startAutoplay();
+    }
+    
+    function startAutoplay() {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+      autoplayInterval = setInterval(handleNext, autoplayDelay);
+    }
+    
+    function handleResize() {
+      containerWidth = container.offsetWidth;
+      updateImages();
+    }
+    
+    // Event listeners
+    if (prevBtn) prevBtn.addEventListener('click', handlePrev);
+    if (nextBtn) nextBtn.addEventListener('click', handleNext);
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
     });
-  });
 
-  // === 5) FORMULAIRE DE CONTACT AVEC EMAILJS ===
+    // Swipe tactile (mobile)
+    const swipeZone = container.closest('.projects-container');
+    if (swipeZone) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      const minSwipe = 50;
+      swipeZone.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      swipeZone.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+        if (Math.abs(deltaX) < minSwipe) return;
+        if (Math.abs(deltaX) <= Math.abs(deltaY)) return;
+        if (deltaX > 0) handlePrev();
+        else handleNext();
+      }, { passive: true });
+    }
+
+    // Click sur les images pour ouvrir l'URL
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        const project = projects[index];
+        if (project && project.url) {
+          window.open(project.url, '_blank');
+        }
+      });
+    });
+    
+     // Initialize
+    updateContent();
+    startAutoplay();
+  }
+
+  // === 4) CONTACT FORM HANDLING ===
   const form = document.getElementById('contact-form');
   const spinner = document.getElementById('loading-spinner');
   // Masquer le spinner au chargement
