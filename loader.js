@@ -28,8 +28,12 @@ function preloadImage(src) {
 // Fonction pour mettre à jour la barre de progression
 function updateProgress(loaded, total) {
     const progress = (loaded / total) * 100;
+    const lang = window.currentLang || 'fr';
+    const label = (window.translations && window.translations[lang])
+        ? window.translations[lang]['loader-text'].replace('...', '')
+        : 'Chargement';
     document.querySelector('.loader-bar').style.width = `${progress}%`;
-    document.querySelector('.loader-text').textContent = `Chargement... ${Math.round(progress)}%`;
+    document.querySelector('.loader-text').textContent = `${label}... ${Math.round(progress)}%`;
 }
 
 // Fonction principale de chargement
@@ -56,7 +60,11 @@ async function loadAllImages() {
 
     } catch (error) {
         console.error('Erreur lors du chargement des images:', error);
-        document.querySelector('.loader-text').textContent = 'Erreur de chargement...';
+        const lang = window.currentLang || 'fr';
+        const errLabel = (window.translations && window.translations[lang])
+            ? window.translations[lang]['loader-error']
+            : 'Erreur de chargement...';
+        document.querySelector('.loader-text').textContent = errLabel;
     }
 }
 

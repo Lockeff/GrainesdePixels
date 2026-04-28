@@ -99,19 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const autoplayDelay = 5000;
     let containerWidth = container.offsetWidth;
     
-    // Données des projets
-    const projects = [
-      { 
-        name: '2 étoiles sont nées',
-        url: 'https://2etoiles.com',
-        quote: 'Deux étoiles sont nées est un jeu d\'aventure/plateforme coopératif en 3D. Le joueur contrôlera deux personnages (ou deux joueurs contrôleront un personnage chacun) qui devront évoluer dans un univers étrange et brumeux où la gravité dépend des sentiments. Chaque personnage aura des pouvoirs propres (voler, téléportation, …) qui leur permettront d\'avancer dans les niveaux.' 
-      },
-      { 
-        name: 'Kelc\'h AR Viya',
-        url: 'https://www.lecycledelavia.com/',
-        quote: 'Un Action/RPG d\'exploration narratif mettant en scène des combats épiques et exploration spatiale. Nous sommes en 2150 et le joueur incarne un personnage qu\'il crée et personnalise, Terrien(ne), s\'enrôlé dans une coalition terrienne/éraiée. Le but de cette organisation est d\'explorer l\'espace pour trouver des alliés face aux Tosieas.' 
-      }
+    const projectUrls = ['https://2etoiles.com', 'https://www.lecycledelavia.com/'];
+    const projectKeys = [
+      { name: 'project-2etoiles-name', quote: 'project-2etoiles-quote' },
+      { name: 'project-kelch-name',    quote: 'project-kelch-quote' }
     ];
+
+    function getProjects() {
+      const t = window.translations[window.currentLang];
+      return projectKeys.map((k, i) => ({
+        name: t[k.name],
+        url: projectUrls[i],
+        quote: t[k.quote]
+      }));
+    }
     
     function calculateGap(width) {
       const minWidth = 1024;
@@ -192,11 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function updateContent() {
+      const projects = getProjects();
       const project = projects[activeIndex];
       nameEl.textContent = project.name;
       animateQuote(project.quote);
       updateImages();
     }
+
+    window.updateCarouselContent = updateContent;
     
     function handleNext() {
       activeIndex = (activeIndex + 1) % images.length;
@@ -259,10 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Click sur les images pour ouvrir l'URL
     images.forEach((img, index) => {
       img.addEventListener('click', () => {
-        const project = projects[index];
-        if (project && project.url) {
-          window.open(project.url, '_blank');
-        }
+        const url = projectUrls[index];
+        if (url) window.open(url, '_blank');
       });
     });
     
@@ -295,15 +297,13 @@ document.addEventListener('DOMContentLoaded', () => {
       .send('service_ydmrfnh', 'template_0fk8f5u', formData)
       .then(
         function () {
-          // Cache le spinner après succès
           spinner.classList.add('hiddenspinner');
-          alert('Message envoyé avec succès !');
+          alert(window.translations[window.currentLang]['alert-success']);
           form.reset();
         },
         function (error) {
-          // Cache le spinner après échec
           spinner.classList.add('hiddenspinner');
-          alert('Une erreur est survenue lors de l\'envoi.');
+          alert(window.translations[window.currentLang]['alert-error']);
           console.error('EmailJS Error:', error);
         }
       );

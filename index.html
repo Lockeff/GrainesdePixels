@@ -15,11 +15,14 @@
             <div class="loader-progress">
                 <div class="loader-bar"></div>
             </div>
-            <p class="loader-text">Chargement...</p>
+            <p class="loader-text" data-i18n="loader-text">Chargement...</p>
         </div>
     </div>
   <header>
   <nav class="navbar">
+    <!-- Bouton de changement de langue (haut gauche) -->
+    <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">EN</button>
+
     <!-- Bouton burger (caché en desktop, visible en mobile) -->
     <div class="burger" id="burger-menu">
       <span class="bar"></span>
@@ -33,38 +36,38 @@
     </a>
 
     <ul class="nav-links" id="nav-links">
-      <li><a href="#Accueil">ACCUEIL</a></li>
-      <li><a href="#qui-suis-je">QUI SOMES-NOUS ?</a></li>
-      
+      <li><a href="#Accueil" data-i18n="nav-accueil">ACCUEIL</a></li>
+      <li><a href="#qui-suis-je" data-i18n="nav-about">QUI SOMMES-NOUS ?</a></li>
+
       <!-- Logo au centre -->
       <li> <img src="./Public/LogoMainBanner.png" class="logoheader" alt="Logo Graines de Pixels"></li>
-      <li><a href="#mes-projets">NOS JEUX</a></li>
-      <li><a href="#contact">CONTACTS</a></li>
+      <li><a href="#mes-projets" data-i18n="nav-projects">NOS JEUX</a></li>
+      <li><a href="#contact" data-i18n="nav-contact">CONTACTS</a></li>
     </ul>
   </nav>
 </header>
 
   <main id="main-content">
-    <!-- SECTION ACCUEIL MODIFIÉE -->
+    <!-- SECTION ACCUEIL -->
     <section id="Accueil" class="content-section">
       <div class="Accueil">
         <div class="text-container">
           <img src="./Public/LogoMainBanner.png"/>
-            <h1>NOUS CREEONS DES EMOTIONS, PIXEL PAR PIXEL </h1>
-            <p>
-            Découvrez nos 
+            <h1 data-i18n="hero-title">NOUS CREEONS DES EMOTIONS, PIXEL PAR PIXEL</h1>
+            <p data-i18n-html="hero-p">
+            Découvrez nos
             <strong>
               <a href="#mes-projets" style="text-decoration: none; color: inherit;">
-                projets, nos jeux 
+                projets, nos jeux
               </a>
             </strong>
-            et n'hesitez pas à 
+            et n'hesitez pas à
             <strong>
               <a href="#contact" style="text-decoration: none; color: inherit;">
                 nous contacter
               </a>
             </strong>
-            pour créer 
+            pour créer
             <strong>
               <a href="#qui-suis-je" style="text-decoration: none; color: inherit;">
                 ensemble
@@ -75,43 +78,43 @@
         </div>
       </div>
 
-      <!-- BLOCS DE NEWS AJOUTÉS -->
+      <!-- BLOCS DE NEWS -->
       <div class="news-section">
-        <h2>DERNIERES ACTUALITEES</h2>
+        <h2 data-i18n="news-title">DERNIERES ACTUALITEES</h2>
         <div class="news-container">
 
           <div class="news-item">
             <img src="./Public/2EtoilesLogo.png" alt="logo" class="news-logo">
             <div class="news-details">
-              <h3>Mars 2025 : Deux Etoiles sont nées</h3>
-              <p>
+              <h3 data-i18n="news1-title">Mars 2025 : Deux Etoiles sont nées</h3>
+              <p data-i18n-html="news1-p">
                 Le projet <strong>Deux Etoiles sont nées</strong> est maintenant lancé et devient notre priorité pour cette année 2025.
                 Beaucoup de jalons sont à mettre en place et le premier a pour objectif de figer le Game Concept du jeu.
                 Le détail du jeu dans <a href="#mes-projets" style="text-decoration: none; color: inherit;color: #e09eff;">Nos projets</a> !
               </p>
             </div>
           </div>
-      
+
           <div class="news-item">
             <img src="./Public/KelcMain.png" alt="logo" class="news-logo">
             <div class="news-details">
-              <h3>Janvier 2025 : Prototype de Kelc'h AR Viya</h3>
-              <p>
-                Le prototype de notre projet d'action/RPG narratif d'exploration spatiale est en scours de réalisation et avance bien, 
+              <h3 data-i18n="news2-title">Janvier 2025 : Prototype de Kelc'h AR Viya</h3>
+              <p data-i18n-html="news2-p">
+                Le prototype de notre projet d'action/RPG narratif d'exploration spatiale est en scours de réalisation et avance bien,
                 Quand il sera prêt, vous pourrez vous rendre dans la section <a href="#mes-projets" style="text-decoration: none; color: inherit;color: #e09eff;">Nos projets</a> pour le tester.
                 Bientôt du nouveau !
               </p>
             </div>
           </div>
-      
+
           <div class="news-item">
             <img src="./Public/GdP-Logo.png" alt="logo" class="news-logo">
             <div class="news-details">
-              <h3>Décembre 2024 : Le site grainesdepixels.fr est en ligne !</h3>
-              <p>
-                Et voila, l'aventure commence pour le studio Graines de pixels.<br> 
+              <h3 data-i18n="news3-title">Décembre 2024 : Le site grainesdepixels.fr est en ligne !</h3>
+              <p data-i18n-html="news3-p">
+                Et voila, l'aventure commence pour le studio Graines de pixels.<br>
                 La première étape etait la création de notre site et le voilà maintenant en ligne !<br>
-                Bon surf. 
+                Bon surf.
               </p>
             </div>
           </div>
@@ -119,43 +122,43 @@
     </section>
     <!-- FIN SECTION ACCUEIL -->
 
-    <!-- SECTION QUI-SUIS-JE (inchangée) -->
+    <!-- SECTION QUI-SUIS-JE -->
     <section id="qui-suis-je" class="content-section hidden">
       <div class="profil">
         <div class="text-container">
-          <h1>A PROPOS</h1>
-          <p class="TexteCentre">
-            Graines de pixels, C'est un studio de jeux vidéo né d'une volonté de <strong>fusionner des compétences complémentaires d'éducation et technique</strong> pour 
-            créer des expériences vidéoludiques uniques, captivantes et innovantes. Nous croyons au pouvoir du jeu vidéo non seulement pour divertir, 
+          <h1 data-i18n="about-title">A PROPOS</h1>
+          <p class="TexteCentre" data-i18n-html="about-intro">
+            Graines de pixels, C'est un studio de jeux vidéo né d'une volonté de <strong>fusionner des compétences complémentaires d'éducation et technique</strong> pour
+            créer des expériences vidéoludiques uniques, captivantes et innovantes. Nous croyons au pouvoir du jeu vidéo non seulement pour divertir,
             mais aussi pour éduquer et inspirer.
           </p>
           <div class="profilfleche">
           <img class="flechedroite" src="./Public/Arrow.png"  alt="">
           <div>
-            <h2>Qui sommes-nous ?</h2>
-            <p>
+            <h2 data-i18n="about-who">Qui sommes-nous ?</h2>
+            <p data-i18n-html="about-ronan">
               <strong>Game designer récement certifié et développeur</strong>, Ronan Menguy développe sur Unreal Engine 5 depuis plus de 4années diver projets. Il assure ainsi les productions du studio en allant du game design aux développements sur Unreal Engine 5 (Blueprint & C++) et les technologies comme Python et JavaScript.
             </p>
-            <p>
-              <strong>Gérante du studio</strong>, Virginia Menguy met à profit ses compétences pour gérer le studio, piloter les relations clients et assurer un suivi administratif précis. 
+            <p data-i18n-html="about-virginia">
+              <strong>Gérante du studio</strong>, Virginia Menguy met à profit ses compétences pour gérer le studio, piloter les relations clients et assurer un suivi administratif précis.
             </p>
-            <p>
+            <p data-i18n-html="about-partners">
               <strong>Pour nous accompagner</strong>: Nous faison régulièrement appel aux services de <a href="https://www.bymedesign.fr/" target="_blank" rel="noopener noreferrer">https://www.bymedesign.fr/</a> et de <a href="https://www.artstation.com/andreaguilar" target="_blank" rel="noopener noreferrer">https://www.artstation.com/andreaguilar</a>
             </p>
           </div>
         </div>
                 <div class="wrapper">
-          <a href="#contact" class="project-button">
-            CONTACEZ-NOUS
+          <a href="#contact" class="project-button" data-i18n="about-btn">
+            CONTACTEZ-NOUS
           </a>
         </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION MES PROJETS (Carrousel 3D comme LOKOSITEWEB) -->
+    <!-- SECTION MES PROJETS -->
     <section id="mes-projets" class="content-section hidden">
-      <h2 class="section-title" style="text-align: center; margin-bottom: 4%; color: var(--color-white);">PRODUCTIONS DU STUDIO</h2>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 4%; color: var(--color-white);" data-i18n="projects-title">PRODUCTIONS DU STUDIO</h2>
       <div class="projects-container">
         <div class="projects-grid">
           <!-- Images des projets -->
@@ -199,7 +202,7 @@
         <!-- Description -->
         <p id="project-description"></p>
         <!-- Missions -->
-        <h3>Nos missions :</h3>
+        <h3 data-i18n="missions-title">Nos missions :</h3>
         <ul id="project-missions"></ul>
         <!-- Diaporama (grande image en haut + miniatures en dessous) -->
         <div class="diaporama">
@@ -215,28 +218,29 @@
       </div>
     </section>
 
-    <!-- SECTION CONTACT (inchangée) -->
+    <!-- SECTION CONTACT -->
     <section id="contact" class="content-section hidden">
       <div id="loading-spinner" class="hiddenspinner">
         <div class="spinner"></div>
       </div>
         <div class="contactForm">
-        <h1 style="text-align: center;">CONTACT</h1>
+        <h1 style="text-align: center;" data-i18n="contact-title">CONTACT</h1>
         <form id="contact-form" class="contact">
-          <label for="subject">Objet :</label>
+          <label for="subject" data-i18n="contact-subject">Objet :</label>
           <input type="text" id="subject" name="subject" required>
-          <label for="email">Adresse e-mail :</label>
+          <label for="email" data-i18n="contact-email">Adresse e-mail :</label>
           <input type="email" id="email" name="email" required>
-          <label for="message">Message :</label>
+          <label for="message" data-i18n="contact-message">Message :</label>
           <textarea id="message" name="message" rows="5" required></textarea>
           <div class="wrapper">
-            <button type="submit" class="project-button">ENVOYER
+            <button type="submit" class="project-button" data-i18n="contact-btn">ENVOYER
            </button>
           </div>
         </form>
       </div>
     </section>
   </main>
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
   <script src="loader.js"></script>
