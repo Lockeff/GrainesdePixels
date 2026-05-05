@@ -276,6 +276,28 @@ nav ul li a:hover {
   pointer-events: none;
 }
 
+.site-footer {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem 1rem 2rem;
+  text-align: center;
+  color: #b8b8b8;
+  font-size: 0.75rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: #e09eff;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
 /* -------------------- */
 /* SECTION ACCUEIL      */
 /* -------------------- */
@@ -1519,4 +1541,3 @@ nav ul li a:hover {
     font-size: 0.8rem;
   }
 }
-

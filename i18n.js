@@ -37,6 +37,7 @@ window.translations = {
     'contact-email': 'Adresse e-mail :',
     'contact-message': 'Message :',
     'contact-btn': 'ENVOYER',
+    'footer-designed': 'Design par :',
     'alert-success': 'Message envoyé avec succès !',
     'alert-error': "Une erreur est survenue lors de l'envoi.",
   },
@@ -76,6 +77,7 @@ window.translations = {
     'contact-email': 'Email address:',
     'contact-message': 'Message:',
     'contact-btn': 'SEND',
+    'footer-designed': 'Designed by:',
     'alert-success': 'Message sent successfully!',
     'alert-error': 'An error occurred while sending the message.',
   }
