@@ -8,7 +8,7 @@ window.translations = {
     'nav-about': 'QUI SOMMES-NOUS ?',
     'nav-projects': 'NOS JEUX',
     'nav-contact': 'CONTACTS',
-    'hero-title': 'NOUS CREEONS DES EMOTIONS, PIXEL PAR PIXEL',
+    'hero-title': 'NOUS CREONS DES EMOTIONS, PIXEL PAR PIXEL',
     'hero-p': `Découvrez nos <strong><a href="#mes-projets" style="text-decoration: none; color: inherit;">projets, nos jeux</a></strong> et n'hesitez pas à <strong><a href="#contact" style="text-decoration: none; color: inherit;">nous contacter</a></strong> pour créer <strong><a href="#qui-suis-je" style="text-decoration: none; color: inherit;">ensemble</a></strong> des jeux extraordinaires !`,
     'news-title': 'DERNIERES ACTUALITEES',
     'news4-title': 'Mai 2026 : où en sommes-nous ?',
